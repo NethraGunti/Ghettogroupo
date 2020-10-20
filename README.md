@@ -5,31 +5,34 @@ Create a virtualenv with python3.8
 ```pip install -r requirements.txt```
 
 ### Steps to setup Postgres
-*LINUX*:
-    sudo apt-get update
-    sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
-    sudo su - postgres
-    createuser --interactive --pwprompt
-```role name: ghetto```
-```role password: ghetto```
-        (if prompted for superuser choose yes)
-    createdb -O ghetto Ghetto
-    
-*Windows*:
-    Use this link for installing it:
-    https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+  *LINUX*:
 
-    You can use PgAdmin to create the new user and the database with the same credentials as above.
+  ```sudo apt-get update```
+
+  ```sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib```
+
+  ```sudo su - postgres```
+
+  ```createuser --interactive --pwprompt```
+
+  ```role name: ghetto```
+
+  ```role password: ghetto```
+  (if prompted for superuser choose yes)
+  ```createdb -O ghetto Ghetto```
+  *Windows*:
+  Use this link for installing it:
+  https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+  You can use PgAdmin to create the new user and the database with the same credentials as above.
 
 ### Database dump and restore
     For Windows, you can use PgAdmin directly.
-*Linux*:
-#### Dump
-```psql ghetto > dump.sql```
-#### Restore
-```psql ghetto < dumo.sql```
+#### Linux Dump
+  ```psql ghetto > dump.sql```
+#### Linux Restore
+  ```psql ghetto < dumo.sql```
 
-### PHASE 1:
+## PHASE 1:
 
 ***STEP 1:***
     Add the 'User' model in 'users' app
