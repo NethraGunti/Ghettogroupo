@@ -14,6 +14,7 @@ Create a virtualenv with python3.8
 ```role password: ghetto```
         (if prompted for superuser choose yes)
     createdb -O ghetto Ghetto
+    
 *Windows*:
     Use this link for installing it:
     https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
