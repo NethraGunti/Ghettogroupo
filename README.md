@@ -19,8 +19,9 @@ Create a virtualenv with python3.8
 
   ```role password: ghetto```
   (if prompted for superuser choose yes)
-  ```createdb -O ghetto Ghetto```
-  *Windows*:
+  ```createdb -O ghetto Ghetto```  
+
+*Windows*:
   Use this link for installing it:
   https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
   You can use PgAdmin to create the new user and the database with the same credentials as above.
