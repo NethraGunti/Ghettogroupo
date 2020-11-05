@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/auth.css">
+    <!-- <link rel="stylesheet" href="{% static 'css/auth.css' %}"> -->
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="outline">
+        <div class="image-wrapper">
+        </div>
+        <div class="info">
+            <h1 style="font-weight: bold; color: crimson; font-size: 52px;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1>
+            <h1 style="font-size: 35px; margin-top: 2%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Login Now!</h1>
+            <div class="form-div">
+                {% if form.errors %}
+                        <p style="color: red">An error has occured! Try again!</p>
+                {% endif %}
+                <form method="POST" action="{%url 'login'%}">
+                    {%csrf_token%}
+                    <div class="group">
+                        <!-- <label class="label">Username</label> &emsp13;&emsp13;&emsp13;&emsp13;&emsp13; -->
+                        <input id="user" type="text" class="input" name="username" placeholder="username" required="required">
+                    </div>
+
+                    <div class="group">
+                        <!-- <label class="label">Password</label> -->
+                        <input id="pass" type="password" class="input" name="password" required="required" placeholder="password">
+                    </div>
+                    <div class="foot-lnk">
+                       {# <a href="{%url 'password_reset'%}">forgot password?</a>#}
+                        <a href="#">forgot password?</a>
+                        <br>
+                        <a href="{% url 'register' %}">Not registered? Create an account</a>
+                    </div>
+                    <!-- <div style="margin-top: 5%;">
+                        <input id="check" type="checkbox" class="check" checked>
+                        <label><span class="icon"></span> Keep me Signed in</label>
+                    </div> -->
+                    <div>
+                        <button type="submit" class="button" >Sign In</button>
+                    </div>
+                </form>
+	        </div>
+
+        </div>
+    </div>
+    <script>
+        $(".outline").css("height",window.innerHeight-20);
+        $(".outline").css("width",window.innerWidth-20);
+        $(".image-wrapper").css("width",window.innerWidth/3);
+        $(".image-wrapper").css("height",window.innerHeight-20);
+
+        if ($(document).width() > $(window).width()){
+                $(".image-wrapper").css("width",window.innerWidth/3);
+                $(".image-wrapper").css("height",window.innerHeight-20);
+                $(".outline").css("width",window.innerWidth-30);
+            }
+        function update() {
+            $(".outline").css("height",window.innerHeight-20);
+            $(".outline").css("width",window.innerWidth-20);
+            
+            $(".image-wrapper").css("height",window.innerHeight-20);
+            $(".image-wrapper").css("width",window.innerWidth/3);
+
+            if ($(document).width() > $(window).width()){
+                $(".image-wrapper").css("height",window.innerHeight-20);
+                $(".outline").css("width",window.innerWidth-30)
+            }
+        }
+
+        $(window).resize(function() {
+            update();
+        });
+    </script>
+
+</body>
+</html>

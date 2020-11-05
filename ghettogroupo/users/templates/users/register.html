@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/auth.css">
+    <!-- <link rel="stylesheet" href="{% static 'css/auth.css' %}"> -->
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="outline">
+        <div class="image-wrapper">
+        </div>
+        <div class="info">
+            <h1 style="font-weight: bold; color: crimson; font-size: 52px;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1>
+            <h1 style="font-size: 35px; margin-top: 2%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Register Today!</h1>
+            <div class="form-div">
+                {% if form.errors %}
+                        <p style="color: red">An error has occured! Try again!</p>
+                {% endif %}
+                <form method="POST" action="{%url 'register'%}">
+                    {%csrf_token%}
+					{% for field in form %}
+						<div class="group">
+							<!-- <label for="{{field.id_for_label}}" class="label"> {{ field.html_name }} </label> -->
+							{{ field }}
+							{% for error in field.errors %}
+								<p style="color: red">{{ error }}</p>
+							{% endfor %}
+						</div>
+					{% endfor %}
+					<div class="group">
+					  <button type="submit" class="button" >Register</button>
+					</div>
+				</form>
+	        </div>
+
+        </div>
+    </div>
+    <script>
+        $(".outline").css("height",window.innerHeight-20);
+        $(".outline").css("width",window.innerWidth-20);
+        $(".image-wrapper").css("width",window.innerWidth/3);
+        $(".image-wrapper").css("height",window.innerHeight-20);
+
+        if ($(document).width() > $(window).width()){
+                $(".image-wrapper").css("width",window.innerWidth/3);
+                $(".image-wrapper").css("height",window.innerHeight-20);
+                $(".outline").css("width",window.innerWidth-30);
+            }
+        function update() {
+            $(".outline").css("height",window.innerHeight-20);
+            $(".outline").css("width",window.innerWidth-20);
+            
+            $(".image-wrapper").css("height",window.innerHeight-20);
+            $(".image-wrapper").css("width",window.innerWidth/3);
+
+            if ($(document).width() > $(window).width()){
+                $(".image-wrapper").css("height",window.innerHeight-20);
+                $(".outline").css("width",window.innerWidth-30)
+            }
+        }
+
+        $(window).resize(function() {
+            update();
+        });
+    </script>
+
+</body>
+</html>

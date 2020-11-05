@@ -1,0 +1,84 @@
+@font-face {
+    font-family:"BerkshireSwash";
+    src: url('../fonts/BerkshireSwash-Regular.ttf') format("truetype");
+}
+
+html{
+    background-color: white;
+}
+.outline{
+    display: flex;
+    background-color: white;
+    height: auto;
+    /* border: 2px solid black; */
+}
+.image-wrapper{
+    background-image: url('../img/image.png');
+    background-repeat: round;
+    width: 30%;
+    /* border: 2px solid red; */
+}
+.info{
+    /* border: 2px solid yellow; */
+    width: 70%;
+    text-align: center;
+}
+
+.form-div{
+    font-size: 18px;
+    margin-top: 6%;
+    /* border: 2px solid black; */
+}
+
+.group{
+    margin-top: 50px;
+}
+.input:focus{
+    background-color: white;
+    border: 3px solid blue;
+    outline: none;
+}
+.input2:focus{
+    background-color: white;
+    border: 3px solid blue;
+    outline: none;
+}
+.input{
+    width: 40%;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #c4c4c4;
+    opacity: 0.5;
+}
+.input2{
+    width: 40%;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #c4c4c4;
+    opacity: 0.5;
+}
+a{
+    color: crimson;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.foot-lnk{
+    margin-top: 50px;
+    color: red;
+}
+
+.button{
+    margin-top: 4%;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 17px;
+    border-radius: 50px;
+    width: 30%;
+}
+
+.button:hover{
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+}
