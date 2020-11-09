@@ -2,6 +2,53 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 
+INTERESTS = [
+    ("Agriculture", "Agriculture"),
+    ("Arts and Entertainment", "Arts and Entertainment"),
+    ("Education", "Education"),
+    ("Food", "Food"),
+    ("Hardware and Automobiles", "Hardware and Automobiles"),
+    ("Healthcare and Medicine", "Healthcare and Medicine"),
+    ("Law and Enforcement", "Law and Enforcement"),
+    ("Sales and Management", "Sales and Management"),
+    ("Science and Technology", "Science and Technology"),
+]
+
+OCCUPATIONS = [
+    ("Actor", "Actor"),
+    ("Architecture", "Architecture"),
+    ("Armed Forces", "Armed Forces"),
+    ("Artisan", "Artisan"),
+    ("Automobile", "Automobile"),
+    ("Construction", "Construction"),
+    ("Dancer", "Dancer"),
+    ("Design and Creativity", "Design and Creativity"),
+    ("Education", "Education"),
+    ("Engineering", "Engineering"),
+    ("Farming", "Farming"),
+    ("Finance", "Finance"),
+    ("Fine Arts", "Fine Arts"),
+    ("Food and Services", "Food and Services"),
+    ("Human Resources", "Human Resources"),
+    ("Information Technology", "Information Technology"),
+    ("Judiciary", "Judiciary"),
+    ("Legislation ", "Legislation "),
+    ("Marketing", "Marketing"),
+    ("Medical", "Medical"),
+    ("Medical practitioner", "Medical practitioner"),
+    ("Musician", "Musician"),
+    ("Nursing Staff", "Nursing Staff"),
+    ("Pharmacist", "Pharmacist"),
+    ("Producer", "Producer"),
+    ("Public health executive", "Public health executive"),
+    ("Researcher", "Researcher"),
+    ("Sales", "Sales"),
+    ("Social Sciences", "Social Sciences"),
+    ("Water supply", "Water supply"),
+    ("Wood and metalwork", "Wood and metalwork"),
+    ("Writer", "Writer")
+]
+
 
 class User(AbstractUser):
     email = models.EmailField(_('Email Address'), unique=True)
@@ -18,6 +65,16 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-    
 
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    age = models.IntegerField(_("Age"))
+    organization = models.CharField(_("Organization"), max_length=75)
+    occupation = models.CharField(_("Occupation"), choices=OCCUPATIONS, max_length=100)
 
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name = 'UserProfile'
+        verbose_name_plural = 'UserProfiles'
