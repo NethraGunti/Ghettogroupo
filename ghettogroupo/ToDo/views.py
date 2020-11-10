@@ -10,7 +10,7 @@ from ToDo.forms import TaskForm
 # Create your views here.
 @login_required(login_url='login')
 def index(request):
-    tasks = Todo.objects.all()
+    tasks = Todo.objects.all().order_by('-id')
 
     form = TaskForm()
 
