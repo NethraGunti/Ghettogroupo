@@ -34,7 +34,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #user modules
     'users.apps.UsersConfig',
-
+    #Todos 
+    'ToDo',
     #third party modules
     'rest_framework',
 
