@@ -13,24 +13,24 @@
         <div class="image-wrapper">
         </div>
         <div class="info">
-            <h1 style="font-weight: bold; color: crimson; font-size: 52px;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1>
-            <h1 style="font-size: 35px; margin-top: 2%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Login Now!</h1>
-            <div class="form-div">
+            <h1 style="font-weight: bold; color: crimson; font-size: 385%;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1>
+            <h1 style="font-size: 200%%; margin-top: 2%; margin-bottom: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Login Now!</h1>
+            <div class="form-div" style="margin-top: 7.5%">
                 {% if form.errors %}
                         <p style="color: red">An error has occured! Try again!</p>
                 {% endif %}
                 <form method="POST" action="{%url 'login'%}">
                     {%csrf_token%}
-                    <div class="group">
+                    <div class="group1">
                         <!-- <label class="label">Username</label> &emsp13;&emsp13;&emsp13;&emsp13;&emsp13; -->
                         <input id="user" type="text" class="input" name="username" placeholder="username" required="required">
                     </div>
 
-                    <div class="group">
+                    <div class="group1">
                         <!-- <label class="label">Password</label> -->
                         <input id="pass" type="password" class="input" name="password" required="required" placeholder="password">
                     </div>
-                    <div class="foot-lnk">
+                    <div class="foot-lnk" style="margin-top: 6%">
                        {# <a href="{%url 'password_reset'%}">forgot password?</a>#}
                         <a href="#">forgot password?</a>
                         <br>

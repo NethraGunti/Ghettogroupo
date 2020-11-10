@@ -64,10 +64,18 @@ class User(AbstractUser):
     
     def __str__(self):
         return self.username
+    
+    @property
+    def profile(self):
+        return UserProfile.objects.get(user=self)
+
+    @property
+    def interests(self):
+        return Interest.objects.filter(user=self)
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField(_("Age"))
     organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of the organization")
     occupation = models.CharField(_("Occupation"), choices=OCCUPATIONS, max_length=100)

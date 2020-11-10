@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../static/css/auth.css">
     <!-- <link rel="stylesheet" href="{% static 'css/auth.css' %}"> -->
 </head>
@@ -13,8 +13,8 @@
         <div class="image-wrapper">
         </div>
         <div class="info">
-            <h1 style="font-weight: bold; color: crimson; font-size: 52px;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1>
-            <h1 style="font-size: 35px; margin-top: 2%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Register Today!</h1>
+            <h1 style="font-weight: bold; color: crimson; font-size: 385%;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1>
+            <h1 style="font-size: 200%%; margin-top: 2%; margin-bottom: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Register Today!</h1>
             <div class="form-div">
                 {% if form.errors %}
                         <p style="color: red">An error has occured! Try again!</p>
@@ -22,7 +22,7 @@
                 <form method="POST" action="{%url 'register'%}">
                     {%csrf_token%}
 					{% for field in form %}
-						<div class="group">
+						<div class="group2">
 							<!-- <label for="{{field.id_for_label}}" class="label"> {{ field.html_name }} </label> -->
 							{{ field }}
 							{% for error in field.errors %}
