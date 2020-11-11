@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 
+from groups.models import Groups
+
+
 INTERESTS = [
     ("Agriculture", "Agriculture"),
     ("Arts and Entertainment", "Arts and Entertainment"),
@@ -73,6 +76,8 @@ class User(AbstractUser):
     def interests(self):
         return Interest.objects.filter(user=self)
 
+    # def inGroup(self, group):
+        # return True if 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
