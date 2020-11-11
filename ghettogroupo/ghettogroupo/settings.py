@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #user modules
+    'general.apps.GeneralConfig',
     'users.apps.UsersConfig',
     'ToDo.apps.TodoConfig',
     'groups.apps.GroupsConfig',
