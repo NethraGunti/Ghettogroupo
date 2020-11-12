@@ -53,6 +53,8 @@ Create a virtualenv with python3.8
 
 
 ***STEP 2:***
+    Add Todo-s
+    
 
 
 ***STEP 3:***
