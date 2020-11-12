@@ -10,14 +10,20 @@ from ToDo.forms import TaskForm
 # Create your views here.
 @login_required(login_url='login')
 def index(request):
-    tasks = Todo.objects.all()
+    tasks = Todo.objects.filter(user=request.user).order_by('-id')
 
     form = TaskForm()
 
     if request.method == 'POST':
         form = TaskForm(request.POST)
+        print(form)
         if form.is_valid():
-            form.save()
+            print('her')
+            new_form = form.save(commit=False)
+            new_form.user = request.user
+            new_form.save()
+        else:
+            print('ajsdbnwijndwjsndjnjxndaqwndoiw0-0000000000000000000000000000')
         return redirect('list')
 
     context = {'tasks':tasks, 'form':form}
@@ -25,7 +31,7 @@ def index(request):
 
 @login_required(login_url='login')
 def updateTodo(request, pk):
-    task = Todo.objects.get(id=pk)
+    task = Todo.objects.get(id=pk, user=request.user)
 
     form = TaskForm(instance=task)
     
@@ -41,7 +47,7 @@ def updateTodo(request, pk):
 
 @login_required
 def deleteTodo(request, pk):
-    item = Todo.objects.get(id=pk)
+    item = Todo.objects.get(id=pk, user=request.user)
 
     if request.method == 'POST':
         item.delete()
