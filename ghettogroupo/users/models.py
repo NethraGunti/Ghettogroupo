@@ -56,10 +56,9 @@ OCCUPATIONS = [
 class User(AbstractUser):
     email = models.EmailField(_('Email Address'), unique=True)
     username = models.CharField(max_length=20, unique=True)
-    firstName = models.CharField(_("First Name"), max_length=20)
-    lastName = models.CharField(_("Last Name"), max_length=20, blank=True, null=True)
+    fullName = models.CharField(_("First Name"), max_length=20)
     USERNAME = 'username'
-    REQUIRED_FIELDS = ['email', 'firstName']
+    REQUIRED_FIELDS = ['email', 'fullName']
 
     class Meta:
         verbose_name = 'User'

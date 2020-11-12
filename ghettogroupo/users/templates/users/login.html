@@ -1,4 +1,7 @@
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +15,12 @@
         <div class="image-wrapper">
         </div>
         <div class="info">
-            <h1 style="font-weight: bold; color: crimson; font-size: 385%;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1>
+            <div class="ghetto">
+                <img src="../../static/img/logo_red.png" alt="ghetto" style="height: 80px; margin: 0 auto;">
+            </div>
+            <!-- <h1 style="font-weight: bold; color: crimson; font-size: 385%;font-family: Georgia, 'Times New Roman', Times, serif;">GhettoGroupo</h1> -->
             <h1 style="font-size: 200%%; margin-top: 2%; margin-bottom: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Login Now!</h1>
-            <div class="form-div" style="margin-top: 7.5%">
+            <div class="form-div" style="margin-top: 2%">
                 {% if form.errors %}
                         <p style="color: red">An error has occured! Try again!</p>
                 {% endif %}
@@ -29,9 +35,8 @@
                         <!-- <label class="label">Password</label> -->
                         <input id="pass" type="password" class="input" name="password" required="required" placeholder="password">
                     </div>
-                    <div class="foot-lnk" style="margin-top: 6%">
+                    <div class="foot-lnk" style="margin-top: 2%">
                        {# <a href="{%url 'password_reset'%}">forgot password?</a>#}
-                        <a href="#">forgot password?</a>
                         <br>
                         <a href="{% url 'register' %}">Not registered? Create an account</a>
                     </div>
@@ -43,8 +48,17 @@
                         <button type="submit" class="button" >Sign In</button>
                     </div>
                 </form>
-	        </div>
-
+                <div style=" margin-top: 40px;">
+                    <span style="color: gray;">___________________________________________________</span>
+                    <br>
+                    <a href="{% provider_login_url 'google' %}">
+                        <img src="../../static/img/google.png" alt="google" style="height: 25px; margin-top: 20px;">
+                        &emsp13;
+                        &emsp13;
+                        <img src="../../static/img/twitter.png" alt="google" style="height: 25px; margin-top: 20px;">
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <script>
