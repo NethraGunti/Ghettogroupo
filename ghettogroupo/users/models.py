@@ -56,7 +56,7 @@ OCCUPATIONS = [
 class User(AbstractUser):
     email = models.EmailField(_('Email Address'), unique=True)
     username = models.CharField(max_length=20, unique=True)
-    fullName = models.CharField(_("First Name"), max_length=20)
+    fullName = models.CharField(_("Full Name"), max_length=20)
     USERNAME = 'username'
     REQUIRED_FIELDS = ['email', 'fullName']
 
@@ -80,6 +80,7 @@ class User(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(_("Profile Picture"), upload_to='profilepictures/')
     age = models.IntegerField(_("Age"))
     organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of the organization")
     occupation = models.CharField(_("Occupation"), choices=OCCUPATIONS, max_length=100)
