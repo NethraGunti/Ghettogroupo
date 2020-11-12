@@ -1,0 +1,106 @@
+__________________________________________________________________________________________-
+
+
+---User---
+email
+username
+first name
+last name
+
+
+@properties
+memberships = Membership.objects.filter(member=self)
+member_groups = memberships.values('group')
+manager_groups = member_groups.filter(isManager=T)
+manager_groups = member_groups.filter(isAssigner=T)
+
+active_tasks = Subgroup.objects.filter(user=self.userid)
+
+// Other permissions functions //
+
+
+__________________________________________________________________________________________-
+
+
+---Profile---
+userid (foreignfield User)
+dob (datefield)
+
+
+__________________________________________________________________________________________-
+
+
+---Group---
+code (uuid)
+type (integerfiled)
+owner (foreignfield User)
+title (charfield)
+desc (textfield)
+link (slugfield)
+
+@properties
+taskassigners = memberes.filter(isAssigner=True)
+managers = members.filter(isManager=True)
+members = Membership.objects.filter(group=self)
+
+
+__________________________________________________________________________________________-
+
+
+
+---Membership---
+group (foreignfield Group)
+member (foreignfield User)
+isOwner (bool, default=F)
+isAssigner (bool, default=F)
+isMember(bool, default=T)
+
+
+__________________________________________________________________________________________-
+
+
+---Tasks---
+assigned by (foreignfield User)
+groupid (foreignfield Group)
+title (charfield)
+desc (textfield)
+deadline (datetimefield, null=T, blank=T)
+attachment (file, null=True, blank=True)
+@property
+assignedTo = Subgroup.objects.filter(task=self)
+
+
+__________________________________________________________________________________________-
+
+
+
+---Subgroup---
+user (foreignfield User)
+task (foreignfield Tasks)
+
+
+__________________________________________________________________________________________-
+
+
+---Quizzes---
+group id (foreignfield Group)
+assigned by (foreignfield User)
+questionsFile (file)
+answersFile (file)
+
+@properties
+questionsSet (parsed from questionFile, also has the options)
+asnwersSet (parsed form answersFile)
+
+
+__________________________________________________________________________________________-
+
+
+//to create new checklists apart from assigned tasks
+---Checklists---
+userid (foreignfield User)
+desc (textfield)
+
+
+
+

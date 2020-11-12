@@ -38,22 +38,23 @@ Create a virtualenv with python3.8
 ***STEP 1:***
     Add the 'User' model in 'users' app
     Run migrations
+    Create Registration/Login pages
+    Create forms
+    Integrate it with frontend
 
-    Schema for 'User' model:
+    <!-- Schema for 'User' model:
         email -> unique
         username -> unique
         first name
         last name
         USERNAME = username
-        REQUIRED FIELDS = email, first name 
-
-    Create these with and also methods to validate the email and username field
+        REQUIRED FIELDS = email, first name
+      Create these with and also methods to validate the email and username field -->
 
 
 ***STEP 2:***
-    Create Registration/Login pages
+    Add Todo-s
+    
 
 
 ***STEP 3:***
-    Create forms
-    Integrate it with frontend
