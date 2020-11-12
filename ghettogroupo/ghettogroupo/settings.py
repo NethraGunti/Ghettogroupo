@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'ToDo.apps.TodoConfig',
     'groups.apps.GroupsConfig',
+    'payments.apps.PaymentsConfig',
 
     #third party modules
     'rest_framework',
