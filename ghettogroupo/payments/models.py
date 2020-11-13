@@ -22,4 +22,18 @@ class Plan(models.Model):
         verbose_name_plural = _( "Plans")
 
     def __str__(self):
-        return self.name
+        return self.plan
+
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey("users.User", verbose_name=_("user_subscription"), on_delete=models.CASCADE)
+    plan = models.ForeignKey(Plan, verbose_name=_("user_plan"), on_delete=models.CASCADE)    
+    isActive = models.BooleanField(_("subscription_active"), default=False)
+
+    class Meta:
+        verbose_name = _("Subscription")
+        verbose_name_plural = _("Subscriptions")
+
+    def __str__(self):
+        return self.user.username

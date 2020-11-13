@@ -17,7 +17,7 @@ html {
     float: left;
     width: 35%;
     height: 100%;
-    background: linear-gradient( rgba(173, 239, 209, 0.2), rgba(173, 239, 209, 0.2) ), url('../img/Project.png');
+    background: linear-gradient( rgba(173, 239, 209, 0), rgba(173, 239, 209, 0) ), url('../img/Project.png');
     background-repeat: round;
     background-size: cover;
 }
