@@ -5,7 +5,7 @@ html {
     background-color: #ADEFD1;
     background: linear-gradient( rgba(173, 239, 209, 0.8), rgba(173, 239, 209, 0.8) ), url('../img/landing-top.png');
     background-size: contain;
-    background-repeat: repeat-x;
+    background-repeat: repeat;
     position: relative;
     background-position: 100%;
     height: 100%;
@@ -57,4 +57,61 @@ a:hover{
     width: 35px;
     margin: auto;
     transition: 0.5s;
+}
+
+.create-group-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+}
+
+.join-group-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+}
+
+.create-group{
+    text-align: center;
+    width: 60%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    border: 3px solid #002d59;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    transition: transform 0.2s;
+    box-shadow: 2px 2px #00478c;
+    border-radius: 25px
+
+}
+.create-group:hover{
+    /* transform: scale3d(4); */
+    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 6px 20px 0 rgba(173,239,209, 1);
+    transform: scale(1.01);
+}
+.join-group{
+    text-align: center;
+    width: 60%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    border: 3px solid #00203F;
+    box-shadow: -2px 2px #00478c;
+    transition: transform 0.2s;
+    border-radius: 25px;
+}
+.join-group:hover{
+    /* transform: scale3d(4); */
+    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 6px 20px 0 rgba(173,239,209, 1);
+    transform: scale(1.01);
+}
+
+.div-img{
+    padding: 20px;
+}
+.div-text{
+    padding: 20px;
+    color: #00478c;
+}
+
+.footer-2{
+    background-color: #00203F;
 }
