@@ -32,16 +32,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #user modules
+    # user modules
     'general.apps.GeneralConfig',
     'users.apps.UsersConfig',
     'ToDo.apps.TodoConfig',
     'groups.apps.GroupsConfig',
+    'quizzes.apps.QuizzesConfig',
 
-    #third party modules
+    # third party modules
     'rest_framework',
 
-    #allauth modules
+    # allauth modules
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -50,7 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
 
-    #django inbuild modules
+    # django inbuild modules
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -158,7 +159,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Authentication model
-AUTH_USER_MODEL = 'users.User' 
+AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'landing-page'
 LOGOUT_REDIRECT_URL = 'landing-page'

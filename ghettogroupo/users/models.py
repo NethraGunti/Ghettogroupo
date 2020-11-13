@@ -63,10 +63,10 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
-    
+
     def __str__(self):
         return self.username
-    
+
     @property
     def profile(self):
         return UserProfile.objects.get(user=self)
@@ -75,28 +75,33 @@ class User(AbstractUser):
     def interests(self):
         return Interest.objects.filter(user=self)
 
+    def get_responses(self, quiz):
+        return "quizzes.Responses".objects.filter(respondant=self, choice__question__quiz=quiz)
+
+    def get_marks(self, quiz):
+        responses = self.get_responses(quiz)
+        count = 0
+        for item in responses:
+            # print(item.choice, item.choice.choice_text)
+            if item.choice.isAnswer:
+                count += item.choice.question.max_marks
+        return count
+
     # def inGroup(self, group):
-        # return True if 
+        # return True if
 
 
-class Interest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    interest = models.CharField(_("Interest"), max_length=100)
-
-    def __str__(self):
-        return self.user.username
-
-    class Meta:
-        verbose_name = 'Interest'
-        verbose_name_plural = 'Interests'
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(_("Profile Picture"), upload_to='profilepictures/')
+    image = models.ImageField(_("Profile Picture"),
+                              upload_to='profilepictures/')
     age = models.IntegerField(_("Age"))
-    organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of organization")
-    occupation = models.CharField(_("Occupation"), choices=OCCUPATIONS, max_length=100)
-    
+    organization = models.CharField(
+        _("Organization"), max_length=75, help_text="write full form of the organization")
+    occupation = models.CharField(
+        _("Occupation"), choices=OCCUPATIONS, max_length=100)
+
     def __str__(self):
         return self.user.username
 
@@ -105,3 +110,14 @@ class UserProfile(models.Model):
         verbose_name_plural = 'UserProfiles'
 
 
+class Interest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    interest = models.CharField(
+        _("Interest"), max_length=100, choices=INTERESTS)
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name = 'Interest'
+        verbose_name_plural = 'Interests'
