@@ -78,13 +78,25 @@ class User(AbstractUser):
     # def inGroup(self, group):
         # return True if 
 
+
+class Interest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    interest = models.CharField(_("Interest"), max_length=100)
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name = 'Interest'
+        verbose_name_plural = 'Interests'
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(_("Profile Picture"), upload_to='profilepictures/')
     age = models.IntegerField(_("Age"))
-    organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of the organization")
+    organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of organization")
     occupation = models.CharField(_("Occupation"), choices=OCCUPATIONS, max_length=100)
-
+    
     def __str__(self):
         return self.user.username
 
@@ -93,13 +105,3 @@ class UserProfile(models.Model):
         verbose_name_plural = 'UserProfiles'
 
 
-class Interest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    interest = models.CharField(_("Interest"), max_length=100, choices=INTERESTS)
-
-    def __str__(self):
-        return self.user.username
-
-    class Meta:
-        verbose_name = 'Interest'
-        verbose_name_plural = 'Interests'
