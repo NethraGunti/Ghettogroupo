@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 
 # from groups.models import Group
+from quizzes.models import Responses
 
 
 INTERESTS = [
@@ -76,7 +77,7 @@ class User(AbstractUser):
         return Interest.objects.filter(user=self)
 
     def get_responses(self, quiz):
-        return "quizzes.Responses".objects.filter(respondant=self, choice__question__quiz=quiz)
+        return Responses.objects.filter(respondant=self, choice__question__quiz=quiz)
 
     def get_marks(self, quiz):
         responses = self.get_responses(quiz)
