@@ -31,24 +31,28 @@ ALLOWED_HOSTS = ['192.168.29.104', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    #user modules
+    # user modules
     'general.apps.GeneralConfig',
     'users.apps.UsersConfig',
     'ToDo.apps.TodoConfig',
     'groups.apps.GroupsConfig',
     'payments.apps.PaymentsConfig',
+    'quizzes.apps.QuizzesConfig',
 
-    #third party modules
+    # third party modules
     'rest_framework',
+    'nested_inline',
 
-    #allauth modules
+    # allauth modules
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'crispy_forms',
 
-    #django inbuild modules
+
+    # django inbuild modules
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -156,7 +160,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Authentication model
-AUTH_USER_MODEL = 'users.User' 
+AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'landing-page'
 LOGOUT_REDIRECT_URL = 'landing-page'
@@ -164,3 +168,4 @@ LOGOUT_REDIRECT_URL = 'landing-page'
 #STRIPE TEST ACCESS KEYS
 STRIPE_PUBLIC_KEY = 'pk_test_51HmbWeD82XqdTEM6aeLhwXLuGRsHdH3MNItMQpIF3CbcLAkkoqFhqyzM6A4I6G7kdId3ayZwxInpdxQGNn44v33Y00oJkDWi5Z'
 STRIPE_PRIVATE_KEY = 'sk_test_51HmbWeD82XqdTEM6d22WdpGHZ97w6qsuybaGcqcBERCO7EXhNMhbrVzrl6ceoVgoN55SWhA7et4zOn2DqfJC1GsR00ND3bJdkw'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,7 +1,49 @@
-<p>Are you sure you want to delete "{{item}}"?</p>
-<a href="{% url 'list' %}">Cancel</a>
+{% load static %}
+<style>
+     @media screen and (max-width:560px){
+        #hi{
+    width:350px;
+    height:350px;
+    background:rgba(0, 0, 0, 0.78);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    
+    margin-top: 7%;
+    margin-bottom: 7%;
 
-<form action='' method="POST">
-    {% csrf_token %}
-    <input type="submit" name="Confirm" id="">
-</form>
+ }
+      }
+    @media screen and (min-width:768px){
+        #hi{
+    width:650px;
+    height:300px;
+    background:rgba(0, 0, 0, 0.78);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-left: 30%;
+    margin-top: 18%;
+   
+ }   
+    }
+ body{
+   background-image:url("https://thumbs.dreamstime.com/b/word-delete-written-wooden-letter-tiles-white-background-concept-remove-business-technology-data-180331248.jpg");
+   background-size:cover; 
+   color:white;
+   background-attachment:fixed;
+}
+</style>
+<body>
+    <div class="container" style="align-items: center;" >
+        <div id='hi'>
+        <form method="POST">
+            {% csrf_token %}
+            
+                <h1 class="border-bottom mb-4" style="padding-top: 4%;font-weight: bold; ">Delete</h1>
+                <h2>Are you sure you want to delete "{{ item }}"?</h2>
+                <button class="btn btn-outline-danger" style="border-radius: 20%;background-color: red;color:white;padding: 2%;" type="submit">Yes,Delete</button>
+                <a class="btn btn-outline-secondary" style="border-radius: 20%;background-color:grey;color:white;padding: 2%; padding-left: 4%; padding-right: 4%;" href="{% url 'list' %}">Cancel</a>                                                                                                               
+          
+        </form>
+    </div>
+    </div>
+</body>
+    
+
