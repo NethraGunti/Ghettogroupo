@@ -8,70 +8,248 @@
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="outline">
-        <div class="common top-nav">
+        <div class="common top-nav" id="sec1">
             <div class="top-left">
             </div>
             <div class="top-right">
                 <div class="nav">
                     {% if user.is_authenticated %}
-                        <a href="{% url 'landing-page' %}">Home</a>
+                        <a class="bt1" href="{% url 'landing-page' %}">Home</a>
                         |
-                        <a href="{% url 'logout' %}">Logout</a>
+                        <a class="bt1" href="{% url 'logout' %}">Logout</a>
                     {% else %}
-                        <a href="{% url 'register' %}">Signup</a>
+                        <a class="bt1" href="{% url 'register' %}">Signup</a>
                         |
-                        <a href="{% url 'login' %}">Login</a>
+                        <a class="bt1" href="{% url 'login' %}">Login</a>
                     {% endif %}
                 </div>
                 <div class="info">
-                    <h6 style="font-weight: normal; font-size: 20px;;">GhettoGroupo aims at reaching a wide range of audience.
-                        The ones benefitting from our product would be Educational
-                        and Non-Eductional organizations including individuals
-                        looking forward to have a shared work environment
+                    <h6 style="font-weight: normal; font-size: 90%; line-height: 1.5;">GhettoGroupo is a multi-purpose workspace
+                        inspired from several existing applications
+                        like Google Classroom, Google Forms, Trello Cards and Kahoot. It provides a single
+                        platform for groups of all levels to manage
+                        their work, conduct surveys and grow their
+                        business. It also provides a platform for
+                        individuals willing to work on open projects.
                     </h6>
                 </div>
                 <div class="down">
-                    <a href="#sec2">
-                        <span style="font-style: none; text-decoration: underline">&nbsp;continue&nbsp;>>></span>
-                    </a>
+                    <div class="next-img-wrapper">
+                        <div class="next-img-1">
+                            <a href="#sec2">
+                                <img src="../../static/img/down-arrow.png" alt="next" style="height: 50%;">
+                            </a>
+                        </div>
+                    </div>
 				</div>
             </div>
         </div>
-        <div class="common features" id="sec2">
-            <div class="create-group-wrapper">
+        <div class="common details" id="sec2">
+            <div class="about-wrapper">
+                <div class="about">
+                    <div class="sec" style="float: left;">
+                        <div class="head">
+                            <h3>Types&emsp13;of&emsp13;Groups</h3>
+                        </div>
+                        <div class="bod">
+                            <p>Different types of groups are available, each with its own specific set of features inorder to thouroughly meet the group requirements</p>
+                        </div>    
+                    </div>
+                    <div class="sec">
+                        <div class="head">
+                            <h3>User&emsp13;Hierarchy</h3>
+                        </div>
+                        <div class="bod">
+                            <p>The user hierarchy functionality gives certain permissions for certain roles which enables ease of group management</p>
+                        </div>    
+                    </div>
+                    <div class="sec">
+                        <div class="head">
+                            <h3>Recommendation&emsp13;System</h3>
+                        </div>
+                        <div class="bod">
+                            <p>The recommendation system gives the users a chance to join groups and work on open source projects</p>
+                        </div>    
+                    </div>
+                </div>    
+            </div>
+            <div class="why-wrapper">
+                <div class="why">
+                    <div class="sec" style="float: left;">
+                        <div class="head">
+                            <h3>Quizzes&emsp13;/&emsp13;Surveys</h3>
+                        </div>
+                        <div class="bod">
+                            <p>Quizzes and Surveys can be conducted within a group inorder to test and imporove the productivity</p>
+                        </div>    
+                    </div>
+                    <div class="sec">
+                        <div class="head">
+                            <h3>Checklists</h3>
+                        </div>
+                        <div class="bod">
+                            <p>The checklists are personalized for each user which has all of his assigned and customized tasks</p>
+                        </div>    
+                    </div>
+                    <div class="sec">
+                        <div class="head">
+                            <h3>Restful&emsp13;Services</h3>
+                        </div>
+                        <div class="bod">
+                            <p>Based on the role of the user and group type, the RESTFUL services differ accordingly</p>
+                        </div>    
+                    </div>
+                </div>    
+            </div>
+            <div class="next-img-wrapper">
+                <div class="next-img">
+                    <a href="#sec3">
+                        <img src="../../static/img/down-arrow (1).png" alt="next">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="common features" id="sec3">
+            <div class="group-wrapper">
                 <div class="create-group">
+                    <div class="div-head">
+                        <h3>Have you got a new project idea but can't seem to find the right people for it?
+                            Or have you got a an organization/class to manage?
+                        </h3>
+                    </div>
                     <div class="div-img">
-                        <img src="../../static/img/create.png" alt="plus">
+                        <img src="../../static/img/add.png" alt="plus" style="height: 100%;">
                     </div>
                     <div class="div-text">
-                        Do you have a project idea and need to find people to work with?
-                        <br>
-                        Do you have to handle your class or organization?
-                        <br>
-                        Then create a group today and create the perfect workspace you want!    
+                        <p>
+                            Join GhettoGroupo today and create your own workspace!
+                        </p>
+                    </div>
+                    <div class="div-button">
+                        <a href="#" class="button">
+                                CREATE
+                        </a>
                     </div>
                 </div>    
             </div>
-            <div class="join-group-wrapper">
+            <div class="group-wrapper" >
                 <div class="join-group">
+                    <div class="div-head">
+                        <h3>Are you a freelancer or looking for open source projects? Or do you have the code for your organization?</h3>
+                    </div>
                     <div class="div-img">
-                        <img src="../../static/img/join.png" alt="plus">
+                        <img src="../../static/img/join.png" alt="plus" style="height: 100%;">
                     </div>
                     <div class="div-text">
-                        Do you have a project idea and need to find people to work with?
-                        <br>
-                        Do you have to handle your class or organization?
-                        <br>
-                        Then create a group today and create the perfect workspace you want!    
+                        <p>
+                            Join GhettoGroupo and find your perfect workspace today!
+                        </p>
                     </div>
-                </div>    
+                    <div class="div-button">
+                        <a href="#" class="button">
+                                JOIN
+                        </a>
+                    </div>
+                </div>
             </div>
-        <div class="common footer" id="sec3">
+        </div>
+        <div class="common footer" id="sec4">
             <div class="footer-1">
-                test1
+                <div class="foot-head-wrapper">
+                    <div class="foot-head">
+                        <h2>O U R&emsp13;&emsp14;&emsp14;T E A M</h2>
+                    </div>
+                </div>
+                <div class="foot-bod">
+                    <div class="team">
+                        <div class="person">
+                            <div class="p-img" id="nethra">
+                                <!-- <img src="../../static/img/nethra.png" alt="nethra"> -->
+                            </div>
+                            <div class="p-txt">
+                                <h4>Nethra Gunti</h4>
+                                <p>API Logic, Backend, Database Design, UI Design, Frontend</p>
+                            </div>
+                        </div>
+                        <div class="person">
+                            <div class="p-img" id="manjju">
+                                <!-- <img src="../../static/img/nethra.png" alt="nethra"> -->
+                            </div>   
+                            <div class="p-txt">
+                                <h4>Manjju Shree</h4>
+                                <p>Backend, UI Design, Frontend</p>
+                            </div> 
+                        </div>
+                        <div class="person">
+                            <div class="p-img" id="aditi">
+                                <!-- <img src="../../static/img/nethra.png" alt="nethra"> -->
+                            </div>
+                            <div class="p-txt">
+                                <h4>Aditi Verma</h4>
+                                <p>Backend, Database Design, UI Design</p>
+                            </div>
+                        </div>
+                        <div class="person">
+                            <div class="p-img" id="madhuri">
+                                <!-- <img src="../../static/img/nethra.png" alt="nethra"> -->
+                            </div>
+                            <div class="p-txt">
+                                <h4>Leela Madhuri</h4>
+                                <p>Frontend</p>
+                            </div>
+                        </div>
+                        <div class="person">
+                            <div class="p-img" id="anusree">
+                                <!-- <img src="../../static/img/nethra.png" alt="nethra"> -->
+                            </div>
+                            <div class="p-txt">
+                                <h4>Ramya Anusri</h4>
+                                <p>Frontend</p>
+                            </div> 
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="footer-2" style="border: 2px solid black;">
-                test 2
+            <div class="footer-2">
+                <div class="foot-sec">
+                    <h3>C o n t a c t &emsp13;  U s</h3>
+                    <br>
+                    <p> = > &emsp13;&emsp13; nethra.g18@iiits.in
+                        <br>
+                        = >&emsp13;&emsp13; manjjushreedevy.g18@iiits.in
+                        <br>
+                        = >&emsp13;&emsp13; aditi.v18@iiits.in
+                        <br>
+                        = > &emsp13;&emsp13;leelamadhuri.m18@iiits.in
+                        <br>
+                        = >&emsp13;&emsp13; ramyaanusri.a18@iiits.in
+                    </p>
+                </div>
+                <div class="foot-sec">
+                    <h3>G o&emsp13;T o&emsp13; L i n k s</h3>
+                    <br>
+                    <p>
+                        <a href="#sec1">
+                            = > &emsp13;&emsp13;    Home
+                        </a>
+                        <br>
+                        <a href="#sec2">
+                            = > &emsp13;&emsp13; Why us?
+                        </a>
+                        <br>
+                        <a href="#sec3">
+                            = > &emsp13;&emsp13;  Create Group
+                        </a>
+                        <br>
+                        <a href="#sec3">
+                            = > &emsp13;&emsp13; Join Group
+                        </a>
+                    </p>
+                </div>
+                <div class="foot-sec" id="logo-bottom">
+                    <!-- <img src="../../static/img/logo-blue.png" alt=""> -->
+                </div>
             </div>
         </div>
     </div>
