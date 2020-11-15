@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'crispy_forms',
-
 
     # django inbuild modules
     'django.contrib.admin',
@@ -164,4 +162,3 @@ AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'landing-page'
 LOGOUT_REDIRECT_URL = 'landing-page'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
