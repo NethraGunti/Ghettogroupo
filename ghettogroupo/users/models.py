@@ -92,6 +92,7 @@ class User(AbstractUser):
         # return True if
 
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(_("Profile Picture"),
