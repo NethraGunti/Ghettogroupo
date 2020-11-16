@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # third party modules
     'rest_framework',
+    'nested_inline',
 
     # allauth modules
     'django.contrib.sites',
