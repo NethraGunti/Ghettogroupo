@@ -1,23 +1,27 @@
-from django.shortcuts import render
+import stripe
+
+from django.shortcuts import render, redirect
 from django.conf import settings
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse_lazy
 
-import stripe
+from payments.models import Plan, Subscription
 
 stripe.api_key = settings.STRIPE_PRIVATE_KEY
 stripe_public_key = settings.STRIPE_PUBLIC_KEY
 
-# def subscribe(request):
-#     user = request.user
-#     if user.is_authenticated:
-#         subscriptions = Subrequestscriptions.objects.filter(user=user)
-# def check(request):
-#     return render(request, 'payments/checkout.html')
 
 def subscribe(request):
-    return render(request, 'payments/subscribe.html')
+    user = request.user
+    if user.is_authenticated:
+        if Subscription.objects.filter(user=user):
+            subscription = Subscription.objects.get(user=user)
+            if subscription.isActive:
+                return redirect(reverse_lazy('landing-page'))
+        return render(request, 'payments/subscribe.html')
+    return redirect(reverse_lazy('login'))
 
 @csrf_exempt
 def regular_checkout(request):

@@ -2,11 +2,11 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 PLANS = [
-    ('REGULAR', 'REGULAR'),
-    ('EDUCATIONAL TIER 1', 'EDUCATIONAL TIER 1'),
-    ('EDUCATIONAL TIER 2', 'EDUCATIONAL TIER 2'),
-    ('WORKSPACE TIER 1', 'WORKSPACE TIER 1'),
-    ('WORKSPACE TIER 2', 'WORKSPACE TIER 2'),
+    ('REGULAR', 'REGULAR'), #g=1, m=20, c=$1,
+    ('EDUCATIONAL TIER 1', 'EDUCATIONAL TIER 1'), #g=1, m=100, c=$15,
+    ('EDUCATIONAL TIER 2', 'EDUCATIONAL TIER 2'), #g=3, m=200, c=$40,
+    ('WORKSPACE TIER 1', 'WORKSPACE TIER 1'), #g=2, m=500, c=$50,
+    ('WORKSPACE TIER 2', 'WORKSPACE TIER 2'), #g=5, m=500, c=$100,
 ]
 
 
