@@ -1,3 +1,9 @@
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
 html {
     scroll-behavior: smooth;
 }
@@ -5,7 +11,7 @@ html {
     background-color: #ADEFD1;
     background: linear-gradient( rgba(173, 239, 209, 0.8), rgba(173, 239, 209, 0.8) ), url('../img/landing-top.png');
     background-size: contain;
-    background-repeat: repeat-x;
+    background-repeat: repeat;
     position: relative;
     background-position: 100%;
     height: 100%;
@@ -17,7 +23,7 @@ html {
     float: left;
     width: 35%;
     height: 100%;
-    background: linear-gradient( rgba(173, 239, 209, 0.2), rgba(173, 239, 209, 0.2) ), url('../img/Project.png');
+    background: linear-gradient( rgba(173, 239, 209, 0), rgba(173, 239, 209, 0) ), url('../img/Project.png');
     background-repeat: round;
     background-size: cover;
 }
@@ -30,17 +36,30 @@ html {
     margin-right: 20px;
     float: right;
 }
-a{
+.bt1{
     color: #00203F;
     text-decoration: none;
     padding: 5px;
     font-size: 16px;
 }
-a:hover{
+.bt1:hover{
     text-decoration: underline;
     font-size: 15px;
     box-shadow: 1px 1px 1px 1px #00203F;
     border-radius: 10%;
+}
+.next-img-1{
+    position: absolute;
+    float: right;
+    margin-top: 15%;
+    animation: blinker 2s linear infinite;
+    border-radius: 50%;
+    padding: 3px 5px;
+    margin-right: 3%;
+}
+.next-img-1:hover{
+    animation: none;
+    border: 2px solid rgba(0,0,0,0.4);
 }
 .info{
     text-align: center;
@@ -49,12 +68,264 @@ a:hover{
     max-width: 80%;
     margin: auto;
     padding: 10px;
+    /* color: #00203F; */
     color: #00203F;
 }
 
 .down{
-    margin-top: 100px;
     width: 35px;
     margin: auto;
     transition: 0.5s;
+}
+
+.details{
+    /* background: url(../img/noise2.png); */
+    background-position: center;
+}
+.about-wrapper{
+    height: 50%;
+    border: 2px solid transparent;
+    border-bottom: 5px solid;
+    border-image-source: linear-gradient(90deg, rgb(255,255, 255) 0%, rgb(0,0,0) 50%, rgb(255,255,255) 100%);
+    border-image-slice: 1;
+}
+.why-wrapper{
+    border: 2px solid transparent;
+    height: 30%;
+}
+.about{
+    margin-top: 3%;
+    border: 2px solid transparent;
+    display: flex;
+}
+.sec{
+    text-align: center;
+    width: 22%;
+    margin-left: 8%;
+    justify-content: center;
+}
+
+.why{
+    margin-top: 5%;
+    display: flex;
+    margin-bottom: 3%;
+    border: 2px solid transparent;
+}
+.head{
+    font-size: 120%;
+    color: crimson;
+    text-decoration: underline;
+}
+.bod{
+    margin-top: -2%;
+    width: 75%;
+    display: inline-block;
+}
+.next-img-wrapper{
+    height: 20%;
+}
+.next-img{
+    float: right;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 3px 5px;
+    margin-right: 3%;
+    transition: transform 0.2s;
+}
+.next-img:hover{
+    box-shadow: 0 1px 2px 0 black;
+    transform: scale(1.01);
+}
+.features{
+    justify-content: center;
+    display: flex;
+    background: url(../img/noise2.png);
+}
+.group-wrapper{
+    margin-top: 2%;
+    height: 90%;
+    width: 50%;
+    justify-content: center;
+    display: flex;
+}
+.create-group{
+    /* background-color: white; */
+    text-align: center;
+    width: 60%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    border: 3px solid #00478c;
+    /* box-shadow: 3px 3px 2px 0 #00478c; */
+    box-shadow: 0 3px 10px 0 #000000;
+    transition: transform 0.2s;
+    border-radius: 25px
+
+}
+.create-group:hover{
+    /* transform: scale3d(4); */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 10px 50px 0 rgba(173,239,209, 1);
+    transform: scale(1.01);
+}
+.join-group{
+    text-align: center;
+    /* background-color: white; */
+    width: 60%;
+    margin-right: 10%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    border: 3px solid #00478c;
+    /* box-shadow: 3px 3px 2px 0 #00478c; */
+    box-shadow: 0 3px 10px 0 #000000;
+    transition: transform 0.2s;
+    border-radius: 25px;
+}
+.join-group:hover{
+    /* transform: scale3d(4); */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 10px 50px 0 rgba(173,239,209, 1);
+    transform: scale(1.01);
+}
+
+.div-head{
+    margin: 20px;
+    margin-top: 30px;
+    color: rgb(87, 80, 80);
+
+}
+.div-img{
+    width: 100%;
+    height: 30%;
+    margin-top: 10%;
+}
+.div-text{
+    padding: 20px;
+    color: rgba(220, 20, 60, 0.9);
+}
+
+.div-button{
+    margin-top: 12%;
+}
+.button{
+    /* width: 60%; */
+    padding: 10px 20%;
+    border-radius: 5px;
+    background-color: #00203F;
+    color: white;
+    text-decoration: none;
+}
+.button:hover{
+    outline: none;
+    box-shadow: none;
+    background-color: gray;
+    border: none;
+    color: black;
+    text-decoration: underline;
+}
+
+.footer-1{
+    justify-content: center;
+}
+.foot-head-wrapper{
+    height: 20%;
+    width: 100%;
+}
+.foot-head{
+    color: crimson;
+    text-align: center;
+    font-size: 110%;
+}
+.foot-bod{
+    height: 80%;
+    width: 100%;
+}
+.team{
+    height: 100%;
+    justify-content: center;
+    display: flex;
+}
+.person{
+    height: 100%;
+    width: 18%;
+    margin-left: 1%;
+    justify-content: center;
+    display: flexbox;
+}
+.p-img{
+    height: 60%;
+}
+#nethra{
+    background: url(../img/nethra.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#manjju{
+    background: url(../img/manjju.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#aditi{
+    background: url(../img/aditi.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#madhuri{
+    background: url(../img/madhuri.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#anusree{
+    background: url(../img/anusree.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.p-txt{
+    text-align: center;
+    margin: 0 10%;
+}
+.p-txt h4{
+    color: rgb(99, 92, 92);
+    font-size: 110%;
+}
+.p-txt p{
+    font-size: 90%;
+    /* color: rgb(99, 92, 92); */
+}
+.footer-2{
+    background-color: #00203F;
+    display: flex;
+}
+.foot-sec{
+    width: 30%;
+    height: 100%;
+    margin-left: 2%;
+    color: #D8D8D8;
+}
+.foot-sec h3{
+    margin-bottom: 0px;
+    margin-left: 20%;
+}
+.foot-sec p{
+    margin-left: 20%;
+    margin-top: 0px;
+    font-size: 80%;
+    line-height: 2;
+}
+
+.foot-sec a{
+    color: inherit;
+    text-decoration: none;
+}
+
+#logo-bottom{
+    background: url(../img/logo-blue.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }

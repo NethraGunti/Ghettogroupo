@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>Buy cool new product</title>
+  </head>
+  <body>
+    <button id="regular-button">REGULAR</button>
+    <button id="edu1-button">Edu Tier 1</button>
+    <button id="edu2-button">Edu Tier 2</button>
+    <button id="org1-button">Org Tier 1</button>
+    <button id="org2-button">Org Tier 2</button>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      const reg_b = document.querySelector('#regular-button')
+      const edu1_b = document.querySelector('#edu1-button')
+      const edu2_b = document.querySelector('#edu2-button')
+      const org1_b = document.querySelector('#org1-button')
+      const org2_b = document.querySelector('#org2-button')
+
+      reg_b.addEventListener('click', event => {
+        fetch('/checkout/regular/')
+        .then((result) => { return result.json() })
+        .then((data) => {
+            var stripe = Stripe(data.stripe_public_key);
+            stripe.redirectToCheckout({
+            sessionId: data.session_id
+          }).then(function (result){
+            //nothing here
+          });
+        })
+      })
+
+
+      edu1_b.addEventListener('click', event => {
+        fetch('/checkout/edu-tier-1/')
+        .then((result) => { return result.json() })
+        .then((data) => {
+            var stripe = Stripe(data.stripe_public_key);
+            stripe.redirectToCheckout({
+            sessionId: data.session_id
+          }).then(function (result){
+            //nothing here
+          });
+        })
+      })
+    
+      edu2_b.addEventListener('click', event => {
+        fetch('/checkout/edu-tier-2/')
+        .then((result) => { return result.json() })
+        .then((data) => {
+            var stripe = Stripe(data.stripe_public_key);
+            stripe.redirectToCheckout({
+            sessionId: data.session_id
+          }).then(function (result){
+            //nothing here
+          });
+        })
+      })
+      
+      org1_b.addEventListener('click', event => {
+        fetch('/checkout/org-tier-1/')
+        .then((result) => { return result.json() })
+        .then((data) => {
+            var stripe = Stripe(data.stripe_public_key);
+            stripe.redirectToCheckout({
+            sessionId: data.session_id
+          }).then(function (result){
+            //nothing here
+          });
+        })
+      })
+    
+      org2_b.addEventListener('click', event => {
+        fetch('/checkout/org-tier-2/')
+        .then((result) => { return result.json() })
+        .then((data) => {
+            var stripe = Stripe(data.stripe_public_key);
+            stripe.redirectToCheckout({
+            sessionId: data.session_id
+          }).then(function (result){
+            //nothing here
+          });
+        })
+      })
+    
+    </script>
+  </body>
+</html>
