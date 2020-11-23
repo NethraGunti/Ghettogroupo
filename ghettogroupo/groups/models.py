@@ -61,4 +61,4 @@ class Membership(models.Model):
         unique_together = ('group', 'member')
 
     def __str__(self):
-        return '{}\t{}'.format(self.group.code, self.member.username)
+        return '{}'.format(self.member.username)

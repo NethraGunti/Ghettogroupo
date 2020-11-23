@@ -9,7 +9,7 @@ class Task(models.Model):
     assigned_by = models.ForeignKey("groups.Membership", verbose_name=_("Assigned By"), on_delete=models.CASCADE)
     task_title = models.CharField(_("Task Title"), max_length=100)
     task_desc = models.CharField(_("Task Description"), max_length=500)
-    deadline = models.DateTimeField(_("Task Deadline"), auto_now=False, auto_now_add=False)
+    deadline = models.DateTimeField(_("Task Deadline"), null=True, blank=True)
     attachment = models.FileField(_("File"), upload_to='taskfiles/', null=True, blank=True)
     
     def __str__(self):
