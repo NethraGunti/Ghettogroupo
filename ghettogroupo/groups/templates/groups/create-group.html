@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Create Group</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="../../static/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="../../static/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="../../static/css/Pretty-Header.css">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <nav class="navbar navbar-light navbar-expand-md custom-header" style="background: rgb(0,32,63);">
+        <div class="container-fluid">
+            <div><a class="navbar-brand" href="#" style="background: rgb(0,32,63);">Ghetto<span>Groupo</span> </a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav links">
+                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Overview </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Home&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);"> Subscribe</a></li>
+                    <li class="nav-item"></li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background: rgb(0,32,63);border-bottom-color: #ffffff;"> <img class="dropdown-image" src="../../static/img/avatar.jpg"></a>
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Settings </a><a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Logout </a></div>
+                    </li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="contact-clean" style="height: 560px;">
+        <form method="POST" action="{%url 'create-group'%}">
+            <h2 class="text-center">Create Group</h2>
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+                {% for field in form %}
+                    <div class="group2">
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">
+                    CREATE
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="../../static/javascript/jquery.min.js"></script>
+    <script src="../../static/javascript/bootstrap.min.js"></script>
+    <script src="../../static/javascript/bs-init.js"></script>
+</body>
+
+</html>

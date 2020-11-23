@@ -27,8 +27,8 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
-    def get_group_url(self, user):
-        return reverse_lazy('test', kwargs={"username": user.username, "code": self.code})
+    def get_group_url(self):
+        return reverse_lazy('group-page', kwargs={"code": self.code})
     
     def get_all_members(self):
         return Membership.objects.filter(group=self)
