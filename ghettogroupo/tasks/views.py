@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from groups.models import Membership
+from groups.models import Group, Membership
 from tasks.forms import CreateTaskForm
 from tasks.models import Task, Subgroup
 
@@ -10,7 +10,8 @@ def create_task(request, code=None):
         form = CreateTaskForm(request.POST)
         data = form.get_cleaned_data(post_data=request.POST)
         new_task = Task.objects.create(
-            assigned_by=Membership.objects.get(group__code=code, member=request.user),
+            assigned_by=request.user,
+            assigned_group=Group.objects.get(code=code),
             task_title=data['task_title'][0],
             task_desc=data['task_desc'][0],
         )
@@ -23,8 +24,15 @@ def create_task(request, code=None):
 
         new_task.save()
         if data['subgroups']:
-            print('hereeeeeeeeeeeeeeeeeee')
-            print(data['subgroups'])
+            for sub in data['subgroups']:
+                s = Subgroup.objects.create(
+                    assigned_to=Membership.objects.get(
+                        group__code=code,
+                        member__username=sub
+                    ),
+                    task=new_task
+                )
+                s.save()
 
         return redirect(reverse_lazy('group-home')) 
     else:

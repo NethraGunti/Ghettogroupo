@@ -27,5 +27,7 @@ urlpatterns = [
     path('', include('groups.urls')),
     path('', include('payments.urls')),
     path('', include('tasks.urls')),
-
+    
+    path('api/', include('api.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ]

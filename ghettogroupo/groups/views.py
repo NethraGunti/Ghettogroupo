@@ -19,6 +19,13 @@ def groupCreationView(request):
             group = form.save(commit=False)
             group.owner = user
             group.save()
+            Membership.objects.create(
+                group=group,
+                member=user,
+                isOwner=True,
+                isManager=True,
+                isAssigner=True,
+            )
             return render(request, 'group-home')
     else:
         form = GroupCreationForm()

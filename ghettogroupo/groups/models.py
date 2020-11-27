@@ -48,7 +48,7 @@ class Group(models.Model):
 class Membership(models.Model):
     membership_id = models.UUIDField(_("Membership ID"), primary_key=True, default=uuid.uuid4, editable=False)
     group = models.ForeignKey("groups.Group", verbose_name=_("Group"), on_delete=models.CASCADE)
-    member = models.ForeignKey("users.User", verbose_name=_("Member"), on_delete=models.CASCADE)
+    member = models.ForeignKey("users.User", verbose_name=_("Member"), db_column='username', on_delete=models.CASCADE)
     isOwner = models.BooleanField(_("Is Owner"), default=False)
     isAssigner = models.BooleanField(_("Is Assigner"), default=False)
     isManager = models.BooleanField(_("Is Manager"), default=False)
@@ -62,3 +62,6 @@ class Membership(models.Model):
 
     def __str__(self):
         return '{}'.format(self.member.username)
+    
+    def __unicode__(self):
+        return self.member
