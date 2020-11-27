@@ -26,6 +26,6 @@ urlpatterns = [
     path('', include('ToDo.urls')),
     path('api/', include('ToDo.api.urls')),
     path('', include('groups.urls')),
-    path('checkout/', include('payments.urls')),
+    path('', include('payments.urls')),
 
 ]
