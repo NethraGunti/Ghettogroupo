@@ -10,6 +10,10 @@ from api.seralizers import EditTaskSerializer, CreateTaskSerializer
 
 
 class EditTasksViewSet(viewsets.ModelViewSet):
+    """
+    list:
+        test doc
+    """
     permission_classes = [permissions.IsAuthenticated, HasTaskCreatePermissions]
     serializer_class = EditTaskSerializer
     http_method_names = ['get', 'put', 'delete']
