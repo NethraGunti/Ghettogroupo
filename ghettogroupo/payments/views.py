@@ -20,7 +20,7 @@ def subscribe(request):
             subscription = Subscription.objects.get(user=user)
             if subscription.isActive:
                 return redirect(reverse_lazy('landing-page'))
-        return render(request, 'payments/subscribe.html')
+        return render(request, 'payments/plans.html')
     return redirect(reverse_lazy('login'))
 
 @csrf_exempt
