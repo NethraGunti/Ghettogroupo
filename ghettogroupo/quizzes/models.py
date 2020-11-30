@@ -8,6 +8,7 @@ class Quiz(models.Model):
         return self.description_text
 
     creator = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    group = models.ForeignKey("groups.Group", on_delete=models.CASCADE)
     description_text = models.CharField(max_length=500)
     pub_date = models.DateTimeField('date published', auto_now_add=True)
     end_date = models.DateTimeField(
