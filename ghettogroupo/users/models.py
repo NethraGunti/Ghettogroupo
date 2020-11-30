@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # from groups.models import Group
 from quizzes.models import Responses
-
+from groups.models import Membership
 
 INTERESTS = [
     ("Agriculture", "Agriculture"),
@@ -68,6 +68,9 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+    def __unicode__(self):
+        return self.username
+
     @property
     def profile(self):
         return UserProfile.objects.get(user=self)
@@ -75,6 +78,15 @@ class User(AbstractUser):
     @property
     def interests(self):
         return Interest.objects.filter(user=self)
+
+    def hasOwnerPerm(self):
+        return True if Membership.objects.filter(member=self, isOwner=True) else False
+    
+    def hasAssignerPerm(self):
+        return True if Membership.objects.filter(member=self, isAssigner=True) else False
+    
+    def hasManagerPerm(self):
+        return True if Membership.objects.filter(member=self, isManager=True) else False
 
     def get_responses(self, quiz):
         return Responses.objects.filter(respondant=self, choice__question__quiz=quiz)
