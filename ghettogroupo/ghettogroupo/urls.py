@@ -25,7 +25,9 @@ urlpatterns = [
     path('', include('users.urls')),
     path('', include('ToDo.urls')),
     path('api/', include('ToDo.api.urls')),
+    path('leaderboard/',include('Leaderboard.urls')),
     path('', include('groups.urls')),
     path('checkout/', include('payments.urls')),
+
 
 ]

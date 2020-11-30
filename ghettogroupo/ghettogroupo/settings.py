@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'groups.apps.GroupsConfig',
     'payments.apps.PaymentsConfig',
     'quizzes.apps.QuizzesConfig',
+    'Leaderboard.apps.LeaderboardConfig',
 
     # third party modules
     'rest_framework',

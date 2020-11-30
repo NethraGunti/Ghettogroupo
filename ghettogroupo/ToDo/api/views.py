@@ -8,6 +8,7 @@ from .serializers import TodoSerializer
 from ToDo.models import Todo
 
 
+
 class TodoListView(generics.GenericAPIView):
     serializer_class = TodoSerializer
     def get(self,request):
@@ -18,7 +19,7 @@ class TodoListView(generics.GenericAPIView):
     def post(self,request):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=self.request.user)
         return Response(serializer.data)
 
 

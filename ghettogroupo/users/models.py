@@ -87,7 +87,6 @@ class User(AbstractUser):
             if item.choice.isAnswer:
                 count += item.choice.question.max_marks
         return count
-
     # def inGroup(self, group):
         # return True if
 
