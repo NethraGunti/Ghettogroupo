@@ -16,9 +16,9 @@ def index(request):
 
     if request.method == 'POST':
         form = TaskForm(request.POST)
-        print(form)
+    
         if form.is_valid():
-            print('her')
+           
             new_form = form.save(commit=False)
             new_form.user = request.user
             new_form.save()
@@ -37,21 +37,20 @@ def updateTodo(request, pk):
     
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
+    
         if form.is_valid():
             form.save()
             return redirect('list')  
 
     context = {'form':form}
-
     return render(request, 'ToDo/update_todo.html', context)
 
-@login_required
+@login_required(login_url='login')
 def deleteTodo(request, pk):
     item = Todo.objects.get(id=pk, user=request.user)
 
     if request.method == 'POST':
         item.delete()
         return redirect('list') 
-
     context = {'item':item}
     return render(request, 'ToDo/delete_todo.html',context)
