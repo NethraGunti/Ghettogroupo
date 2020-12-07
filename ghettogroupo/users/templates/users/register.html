@@ -27,7 +27,7 @@
                         <p style="color: red">An error has occured! Try again!</p>
                 {% endif %}
                 <form method="POST" action="{%url 'register'%}">
-                    {%csrf_token%}
+                    {% csrf_token %}
 					{% for field in form %}
 						<div class="group2">
 							<!-- <label for="{{field.id_for_label}}" class="label"> {{ field.html_name }} </label> -->

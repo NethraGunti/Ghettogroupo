@@ -39,12 +39,15 @@ INSTALLED_APPS = [
     'groups.apps.GroupsConfig',
     'payments.apps.PaymentsConfig',
     'quizzes.apps.QuizzesConfig',
+    'tasks.apps.TasksConfig',
+    'api.apps.ApiConfig',
     'Leaderboard.apps.LeaderboardConfig',
 
     # third party modules
     'rest_framework',
     'nested_inline',
-
+    'drf_yasg',
+    
     # allauth modules
     'django.contrib.sites',
     'allauth',
@@ -170,4 +173,5 @@ LOGOUT_REDIRECT_URL = 'landing-page'
 #STRIPE TEST ACCESS KEYS
 STRIPE_PUBLIC_KEY = 'pk_test_51HmbWeD82XqdTEM6aeLhwXLuGRsHdH3MNItMQpIF3CbcLAkkoqFhqyzM6A4I6G7kdId3ayZwxInpdxQGNn44v33Y00oJkDWi5Z'
 STRIPE_PRIVATE_KEY = 'sk_test_51HmbWeD82XqdTEM6d22WdpGHZ97w6qsuybaGcqcBERCO7EXhNMhbrVzrl6ceoVgoN55SWhA7et4zOn2DqfJC1GsR00ND3bJdkw'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
