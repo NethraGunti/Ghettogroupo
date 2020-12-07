@@ -36,14 +36,18 @@
     <div class="contact-clean" style="height: 560px;">
         <form method="post">
             <h2 class="text-center">Join Group</h2>
-            <div class="form-group">
+            {% csrf_token %}
+            <!-- <div class="form-group">
                 <input class="form-control" type="text" name="group code" placeholder="group code">
-            </div>
+            </div> -->
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">
                     Join
                 </button>
-                </div>
+                </div >
         </form>
     </div>
     <script src="../../static/javascript/jquery.min.js"></script>

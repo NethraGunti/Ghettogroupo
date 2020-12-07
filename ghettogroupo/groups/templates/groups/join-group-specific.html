@@ -1,50 +1,54 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>create-group</title>
-    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="../../static/css/Contact-Form-Clean.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="../../static/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="../../static/css/Pretty-Header.css">
-    <link rel="stylesheet" href="../../static/css/styles.css">
-</head>
-
-<body>
-    <nav class="navbar navbar-light navbar-expand-md custom-header" style="background: rgb(0,32,63);">
-        <div class="container-fluid">
-            <div><a class="navbar-brand" href="#" style="background: rgb(0,32,63);">Ghetto<span>Groupo</span> </a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
-            <div
-                class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav links">
-                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Overview </a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Home&nbsp;</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);"> Subscribe</a></li>
-                    <li class="nav-item"></li>
-                </ul>
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background: rgb(0,32,63);border-bottom-color: #ffffff;"> <img class="dropdown-image" src="../../static/img/avatar.jpg"></a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Settings </a><a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Logout </a></div>
-                    </li>
-                </ul>
+{% extends 'groups/nav-base.html' %}
+{% load static %}
+{% block title %}
+  Join Group
+{% endblock %}
+{% block body%}
+        <nav class="navbar navbar-light navbar-expand-md custom-header" style="background: rgb(0,32,63);">
+            <div class="container-fluid">
+                <div><a class="navbar-brand" href="#" style="background: rgb(0,32,63);">Ghetto<span>Groupo</span> </a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+                <div
+                    class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav links">
+                        <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Overview </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Home&nbsp;</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);"> Subscribe</a></li>
+                        <li class="nav-item"></li>
+                    </ul>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background: rgb(0,32,63);border-bottom-color: #ffffff;"> <img class="dropdown-image" src="../../static/img/avatar.jpg"></a>
+                            <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Settings </a><a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Logout </a></div>
+                        </li>
+                    </ul>
+            </div>
+            </div>
+        </nav>
+        <div class="contact-clean" style="height: 560px;">
+            <form>
+                <h2 class="text-center"> {{ group.name.title }}
+                    <br>
+                    <span style="font-size:60%"> {{group.type}} </span>
+                </h2>
+                <p style="text-align: center;">
+                    {{ group.description }}
+                    {% comment %} <div class="form-group"><small class="form-text text-muted">{{group.description}}</small></div> {% endcomment %}
+                </p>
+                <div>
+                    {% if status == 'requested'%}
+                        <h6 style="text-align: center; color: blue">
+                            request waitimg to be accepted!
+                        </h6>
+                    {% else %}
+                    <small class="form-text text-center" style="color: rgb(215,20,20);margin-bottom: 25px;">You are not a part of this group! Request to join and wait until accepted!</small>
+                        <!-- <a href="{% url 'add-member' code=code isreq='TRUE' %}" style="heigh:100%;width:100%;border:2px solid black"> -->
+                            <button class="btn btn-primary d-sm-flex justify-content-sm-start align-items-sm-end form-group" type="button" style="margin: 0 auto;">
+                                <a href="{% url 'add-member' code=code isreq='TRUE' %}">
+                                    Request                                    
+                                </a>
+                            </button>    
+                        <!-- </a> -->
+                    {% endif %}
+                </div>
+        </form>
         </div>
-        </div>
-    </nav>
-    <div class="contact-clean" style="height: 560px;">
-        <form method="post">
-            <h2 class="text-center">Group {{title}}</h2>
-            <div class="form-group"><small class="form-text text-muted">{{group.description}}</small></div><small class="form-text text-center" style="color: rgb(215,20,20);margin-bottom: 25px;">You are not a part of this group! Request to join and wait until accepted!</small>
-            <div
-                class="form-group"><button class="btn btn-primary d-sm-flex justify-content-sm-start align-items-sm-end" type="submit" style="margin: 0 auto;">Request</button></div>
-    </form>
-    </div>
-    <script src="../../static/javascript/jquery.min.js"></script>
-    <script src="../../static/javascript/bootstrap.min.js"></script>
-    <script src="../../static/javascript/bs-init.js"></script>
-</body>
-
-</html>
+{% endblock %}
