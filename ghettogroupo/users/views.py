@@ -1,11 +1,13 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 
 from users.models import User, UserProfile, Interest
-from users.forms import UserRegistrationForm, UserProfileForm, InterestForm
+from users.forms import UserRegistrationForm, UserProfileForm
 
 def landing_page(request):
     return render(request, 'users/home.html')
+
 
 def UserRegisterView(request):
     if request.method == 'POST':
@@ -17,25 +19,29 @@ def UserRegisterView(request):
         form = UserRegistrationForm()
     return render(request,'users/register.html', {'form':form})
 
-def user_profile(request, pk):
-   
-    if request.POST:
-        profile_form = UserProfileForm(request.POST,request.FILES)
-        interest_form = InterestForm(request.POST)
-        if profile_form.is_valid() and interest_form.is_valid():
 
-            profile = profile_form.save(commit=False)
-            profile.user = request.user
+@login_required
+def userprofile(request):
+    user = request.user
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=user.profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = user
             profile.save()
 
-            interests = interest_form.save(commit=False)
-            interests.user = request.user
-            interests.save()
+            int_list = form.cleaned_data['interest']
+            #remove unchecked interests
+            for i in profile.interest.all():
+                if i not in int_list:
+                    profile.interest.remove(i)
+            #add new interests
+            for i in int_list:
+                if i not in profile.interest.all():
+                    profile.interest.add(i)
 
-            return redirect('landing-page')
+
+            return redirect(reverse_lazy('landing-page'))
     else:
-        profile_form = UserProfileForm()
-        interest_form = InterestForm()
-    return render(request, 'users/userprofile.html', {'user' : User.objects.get(pk=pk),'profile_form' : profile_form,'interest_form' : interest_form})
-
-
+        form = UserProfileForm(instance=user.profile)
+    return render(request, 'users/profile.html', {'form':form})

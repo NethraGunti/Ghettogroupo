@@ -1,25 +1,10 @@
+{% extends 'groups/nav-base.html' %}
+{% load static %}
+{% block title %}
+Group Home
+{% endblock %}
+{% block body%}
 
-
-
-    <nav class="navbar navbar-light navbar-expand-md custom-header" style="background: rgb(0,32,63);">
-        <div class="container-fluid">
-            <div><a class="navbar-brand" href="#" style="background: rgb(0,32,63);">Ghetto<span>Groupo</span> </a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
-            <div
-                class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav links">
-                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Overview </a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);">Home&nbsp;</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="background: rgb(0,32,63);"> Subscribe</a></li>
-                    <li class="nav-item"></li>
-                </ul>
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background: rgb(0,32,63);border-bottom-color: #ffffff;"> <img class="dropdown-image" src="../../static/img/avatar.jpg"></a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Settings </a><a class="dropdown-item" data-bs-hover-animate="pulse" href="#">Logout </a></div>
-                    </li>
-                </ul>
-        </div>
-        </div>
-    </nav>
     <div style="padding:0; height: 560px; border: 2px solid red;">
         <div class="top-sec">
             <div class="back-to-dashboard text-muted">
@@ -89,3 +74,4 @@
             </div>
         </div>
     </div>
+{% endblock %}

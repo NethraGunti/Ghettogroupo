@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
@@ -7,6 +8,7 @@ from payments.models import Subscription
 from groups.models import Group, Membership, Request
 from groups.forms import GroupCreationForm, JoinGroupForm
 
+@login_required
 def group_page_view(request, code):
     if Membership.objects.filter(member=request.user, group__code=code):
         return redirect(reverse_lazy('group-home'))
@@ -22,12 +24,12 @@ def group_page_view(request, code):
             user_req.delete()
             return redirect(reverse_lazy('group-home'))
         else:
-            return render(request, 'groups/join-group-specific.html', {'group': Group.objects.get(code=code), 'status': 'requested', 'code':code})
+            return render(request, 'groups/join-group-specific.html', {'group': Group.objects.get(code=code), 'status': 'requested', 'code':code, 'user':user})
 
     except ObjectDoesNotExist:
-        return render(request, 'groups/join-group-specific.html', {'group': Group.objects.get(code=code), 'status': 'norequest', 'code':code})
+        return render(request, 'groups/join-group-specific.html', {'group': Group.objects.get(code=code), 'status': 'norequest', 'code':code, 'user':user})
 
-
+@login_required
 def groupCreationView(request):
     user = request.user
     if request.method == 'POST':
@@ -57,14 +59,14 @@ def groupCreationView(request):
         types = [(i[0].title, i[0].title) for i in group_types]
         form = GroupCreationForm(types=types)
         if types:
-            return render(request, 'groups/create-group.html', {'form':form, 'status':'hassubs'})
+            return render(request, 'groups/create-group.html', {'form':form, 'status':'hassubs', 'user':user})
         else:
-            return render(request, 'groups/create-group.html', {'form':form, 'status':'nosubs'})
+            return render(request, 'groups/create-group.html', {'form':form, 'status':'nosubs', 'user':user})
 
 
+@login_required
 def join_group_view(request, code=None):
     user = request.user
-
     if not code:
         if request.method == 'POST':
             form = JoinGroupForm(request.POST)
@@ -88,4 +90,4 @@ def join_group_view(request, code=None):
                 )
         else:
             form = JoinGroupForm()
-            return render(request, 'groups/join-group.html', {'form':form})
+            return render(request, 'groups/join-group.html', {'form':form, 'user':user})

@@ -1,5 +1,6 @@
 import stripe
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.urls import reverse
@@ -13,15 +14,14 @@ stripe.api_key = settings.STRIPE_PRIVATE_KEY
 stripe_public_key = settings.STRIPE_PUBLIC_KEY
 
 
+@login_required
 def subscribe(request):
     user = request.user
-    if user.is_authenticated:
-        if Subscription.objects.filter(user=user):
-            subscription = Subscription.objects.get(user=user, isActive=True)
-            if subscription.isActive:
-                return redirect(reverse_lazy('landing-page'))
-        return render(request, 'payments/plans.html')
-    return redirect(reverse_lazy('login'))
+    if Subscription.objects.filter(user=user):
+        subscription = Subscription.objects.get(user=user, isActive=True)
+        if subscription.isActive:
+            return redirect(reverse_lazy('landing-page'))
+    return render(request, 'payments/plans.html')
 
 @csrf_exempt
 def regular_checkout(request):
