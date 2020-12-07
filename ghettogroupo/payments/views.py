@@ -17,7 +17,7 @@ def subscribe(request):
     user = request.user
     if user.is_authenticated:
         if Subscription.objects.filter(user=user):
-            subscription = Subscription.objects.get(user=user)
+            subscription = Subscription.objects.get(user=user, isActive=True)
             if subscription.isActive:
                 return redirect(reverse_lazy('landing-page'))
         return render(request, 'payments/plans.html')
