@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<title>Document</title>
+	<title>List Todo</title>
 	<style>
 	
 		body{
@@ -59,7 +60,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<div class="center-column">
-	
 		<h3>TO-DO</h3>
 	
 		<form action='' method="POST" >
@@ -84,8 +84,6 @@
 		{% endfor %}
 		</div>
 	</div>
-	<script>
-        $(".todo-list").css("height",window.innerHeight/1.75);
-	</script>
+
 </body>
 </html>
