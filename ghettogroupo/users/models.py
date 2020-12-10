@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
+from PIL import Image
 
-# from groups.models import Group
 from quizzes.models import Responses
 from groups.models import Membership
 
@@ -73,11 +73,14 @@ class User(AbstractUser):
 
     @property
     def profile(self):
-        return UserProfile.objects.get(user=self)
+        if UserProfile.objects.filter(user=self):
+            return UserProfile.objects.get(user=self)
+        else:
+            return None
 
     @property
-    def interests(self):
-        return Interest.objects.filter(user=self)
+    def profileimage(self):
+        return UserProfile.objects.get(user=self).image
 
     def hasOwnerPerm(self):
         return True if Membership.objects.filter(member=self, isOwner=True) else False
@@ -103,33 +106,42 @@ class User(AbstractUser):
         # return True if
 
 
+class Interest(models.Model):
+    interest = models.CharField(_("Interest"), max_length=100, choices=INTERESTS)
+
+    def __str__(self):
+        return self.interest
+
+    def __unicode__(self):
+        return self.interest
+
+    class Meta:
+        verbose_name = 'Interest'
+        verbose_name_plural = 'Interests'
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(_("Profile Picture"),
-                              upload_to='profilepictures/')
+    image = models.ImageField(_("Profile Picture"), upload_to='profilepictures/')
     age = models.IntegerField(_("Age"))
-    organization = models.CharField(
-        _("Organization"), max_length=75, help_text="write full form of the organization")
-    occupation = models.CharField(
-        _("Occupation"), choices=OCCUPATIONS, max_length=100)
-
-    def __str__(self):
-        return self.user.username
+    organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of the organization")
+    occupation = models.CharField(_("Occupation"), choices=OCCUPATIONS, max_length=100)
+    interest = models.ManyToManyField(Interest)
 
     class Meta:
         verbose_name = 'UserProfile'
         verbose_name_plural = 'UserProfiles'
 
-
-class Interest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    interest = models.CharField(
-        _("Interest"), max_length=100, choices=INTERESTS)
-
     def __str__(self):
         return self.user.username
 
-    class Meta:
-        verbose_name = 'Interest'
-        verbose_name_plural = 'Interests'
+    def __unicode__(self):
+        return self.user.username
+
+    def save(self):
+        super().save()
+        img = Image.open(self.image.path)
+        if (img.height > 300) or (img.width > 300):
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)

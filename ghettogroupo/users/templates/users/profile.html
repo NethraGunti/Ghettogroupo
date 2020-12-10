@@ -1,0 +1,21 @@
+{% extends 'groups/nav-base.html' %}
+{% load static %}
+
+{% block title %}
+    Create Group
+{% endblock %}
+
+{% block body %}
+    <div class="nav-side">
+    fiknkj
+    </div>
+    <img src="{{ user.profileimage.url }}" alt="avatar" style="height: 200px; margin-top: 20px; margin-left: 20px;">
+        <form method = "post" enctype="multipart/form-data"> 
+            {% csrf_token %} 
+            {{ form.as_p }} 
+            <p style="color:red">
+                {{ form.errors }}
+            </p>
+            <button type="submit">Submit</button> 
+        </form>
+{% endblock %}

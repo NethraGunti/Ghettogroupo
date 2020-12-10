@@ -16,26 +16,16 @@ class UserRegistrationForm(UserCreationForm):
             'fullName':forms.TextInput(attrs={'class':'input2', 'placeholder':'full name'}),
         }
 
+
+class InterestForm(forms.Form):
+    interest = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple,queryset=Interest.objects.all())
+
+
 class UserProfileForm(forms.ModelForm):
-    
+    interest = InterestForm()
     class Meta:
         model = UserProfile
-        fields = ['image','age','organization','occupation']
-
-
-class InterestForm(forms.ModelForm):
-    INTERESTS = [
-    ("Agriculture", "Agriculture"),
-    ("Arts and Entertainment", "Arts and Entertainment"),
-    ("Education", "Education"),
-    ("Food", "Food"),
-    ("Hardware and Automobiles", "Hardware and Automobiles"),
-    ("Healthcare and Medicine", "Healthcare and Medicine"),
-    ("Law and Enforcement", "Law and Enforcement"),
-    ("Sales and Management", "Sales and Management"),
-    ("Science and Technology", "Science and Technology"),
-]
-    interest = forms.MultipleChoiceField(required=False,widget=forms.CheckboxSelectMultiple,choices=INTERESTS,)
-    class Meta:
-        model = Interest
-        fields = ['interest']
+        exclude = ['user']
+        widgets = {
+            'interest': forms.CheckboxSelectMultiple()
+        }
