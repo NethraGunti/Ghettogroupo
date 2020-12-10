@@ -139,7 +139,7 @@ html {
 .features{
     justify-content: center;
     display: flex;
-    background: url(../img/noise2.png);
+    background: url(../img/noise.png);
 }
 .group-wrapper{
     margin-top: 2%;
@@ -165,7 +165,8 @@ html {
 .create-group:hover{
     /* transform: scale3d(4); */
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 10px 50px 0 rgba(173,239,209, 1);
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0, 1), 0 10px 50px 0 rgba(0,0,0, 1); */
+    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 6px 20px 0 rgba(173,239,209, 1);
     transform: scale(1.01);
 }
 .join-group{
@@ -184,7 +185,8 @@ html {
 .join-group:hover{
     /* transform: scale3d(4); */
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 10px 50px 0 rgba(173,239,209, 1);
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0, 1), 0 6px 20px 0 rgba(0,0,0, 1); */
+    box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 6px 20px 0 rgba(173,239,209, 1);
     transform: scale(1.01);
 }
 

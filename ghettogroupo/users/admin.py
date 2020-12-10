@@ -1,24 +1,23 @@
 from django.contrib import admin
+from django.contrib.admin.views.main import ChangeList
 
 from users.models import User, UserProfile, Interest
+from users.forms import InterestForm
 
-# admin.site.register(UserProfile)
-# admin.site.register(Interest)
+admin.site.register(Interest)
 
-class InterestInline(admin.TabularInline):
-    model = Interest
 
 class ProfileInline(admin.TabularInline):
     model = UserProfile
 
+
 class UserAdmin(admin.ModelAdmin):
-    inlines = [ProfileInline, InterestInline]
-    # def get_inline_instances(self, request, obj=None):
-        # if not obj:
-            # return []
-        # unfiltered = super(UserAdmin, self).get_inline_instances(request, obj)
-        # if obj.relationships.all():
-        #     return [x for x in unfiltered if isinstance(x,RelationshipInlineTo)]
-        # else:
-        #     return [x for x in unfiltered if isinstance(x,RelationshipInlineFrom)]
+    inlines = [ProfileInline, ]
+
+
+class InterestUserAdmin(admin.ModelAdmin):
+    model = UserProfile
+    filter_horizontal = ['interest',]
+
 admin.site.register(User, UserAdmin)
+admin.site.register(UserProfile, InterestUserAdmin)

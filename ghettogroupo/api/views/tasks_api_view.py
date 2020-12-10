@@ -12,7 +12,13 @@ from api.seralizers import EditTaskSerializer, CreateTaskSerializer
 class EditTasksViewSet(viewsets.ModelViewSet):
     """
     list:
-        test doc
+        allowed users can update/delete existing tasks they have created
+    retrieve:
+        details of a task
+    update:
+        edit a task
+    delete:
+        delete a task
     """
     permission_classes = [permissions.IsAuthenticated, HasTaskCreatePermissions]
     serializer_class = EditTaskSerializer
@@ -28,6 +34,14 @@ class EditTasksViewSet(viewsets.ModelViewSet):
 
 
 class CreateTasksViewSet(viewsets.ModelViewSet):
+    """
+    list:
+        list of all groups a user can assign tasks to
+    create:
+        allowed users can create new tasks
+    retrieve:
+        method not allowed
+    """
     permission_classes = [permissions.IsAuthenticated, HasTaskCreatePermissions, LimitObejectLevelView]
     serializer_class = CreateTaskSerializer
     http_method_names = ['get', 'post']
