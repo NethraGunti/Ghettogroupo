@@ -1,5 +1,5 @@
 html{
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .navbar{
@@ -95,4 +95,9 @@ html{
     margin: 5%;
     height: 75%;
     /* box-shadow: 0 4px 8px 0 rgba(173,239,209, 1), 0 10px 10px 0 rgba(173,239,209, 1); */
+}
+
+.nav-side{
+    border: 2px solid red;
+    background-color: black;
 }

@@ -65,3 +65,20 @@ class Membership(models.Model):
     
     def __unicode__(self):
         return self.member
+
+
+class Request(models.Model):
+    user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, verbose_name=_("Group"), on_delete=models.CASCADE)
+    isInvite = models.BooleanField(_("Is Invite"), default=False)
+
+
+    class Meta:
+        verbose_name = _("Request")
+        verbose_name_plural = _("Requests")
+
+    def __str__(self):
+        return '{}'.format(self.user)
+
+    def __unicode__(self):
+        return self.user

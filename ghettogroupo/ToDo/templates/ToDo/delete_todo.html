@@ -1,49 +1,63 @@
 {% load static %}
-<style>
-     @media screen and (max-width:560px){
-        #hi{
-    width:350px;
-    height:350px;
-    background:rgba(0, 0, 0, 0.78);
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    
-    margin-top: 7%;
-    margin-bottom: 7%;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Delete Todo</title>
+	<style>
+	
+		body{
+			background-image: url('https://image.shutterstock.com/image-photo/writers-table-flat-lay-composition-260nw-1017732259.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+	
+	
+		.center-column{<
+			width:600px;
+			margin: 20px auto;
+			padding:20px;
+			background-color: #fff;
+			border-radius: 3px;
+			box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+		}
+	
+		.item-row{
+			background-color:white;
+			margin: 10px;
+			padding: 20px;
+			border-radius: 3px;
+			color: #fff;
+			font-size: 16px;
+			box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+		}
+	
+	
+	
+	</style>
 
- }
-      }
-    @media screen and (min-width:768px){
-        #hi{
-    width:650px;
-    height:300px;
-    background:rgba(0, 0, 0, 0.78);
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    margin-left: 30%;
-    margin-top: 18%;
-   
- }   
-    }
- body{
-   background-image:url("https://thumbs.dreamstime.com/b/word-delete-written-wooden-letter-tiles-white-background-concept-remove-business-technology-data-180331248.jpg");
-   background-size:cover; 
-   color:white;
-   background-attachment:fixed;
-}
-</style>
+</head>
 <body>
-    <div class="container" style="align-items: center;" >
-        <div id='hi'>
-        <form method="POST">
-            {% csrf_token %}
-            
-                <h1 class="border-bottom mb-4" style="padding-top: 4%;font-weight: bold; ">Delete</h1>
-                <h2>Are you sure you want to delete "{{ item }}"?</h2>
-                <button class="btn btn-outline-danger" style="border-radius: 20%;background-color: red;color:white;padding: 2%;" type="submit">Yes,Delete</button>
-                <a class="btn btn-outline-secondary" style="border-radius: 20%;background-color:grey;color:white;padding: 2%; padding-left: 4%; padding-right: 4%;" href="{% url 'list' %}">Cancel</a>                                                                                                               
-          
-        </form>
-    </div>
-    </div>
-</body>
-    
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<div class="center-column">
+	
+		<h3>Delete</h3>
+	
+		<form action='' method="POST" >
+            {% csrf_token %}
+    
+            <h2>Are you sure you want to delete <b>"{{ item }}"</b>?</h2>
+            <div class="item-row">
+				<button class = "btn btn-sm btn-danger">Yes,Delete</button>
+                <a class = "btn btn-sm btn-secondary" style="padding-left: 3.5%;padding-right: 3.5%;" href="{% url 'list' %}">Cancel</a>
+			</div>
+		</form>
+	
+	
+	</div>
+
+</body>
+</html>

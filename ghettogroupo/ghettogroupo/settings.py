@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'quizzes.apps.QuizzesConfig',
     'tasks.apps.TasksConfig',
     'api.apps.ApiConfig',
+    'Leaderboard.apps.LeaderboardConfig',
 
     # third party modules
     'rest_framework',
@@ -53,6 +54,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'crispy_forms',
+
 
     # django inbuild modules
     'django.contrib.admin',
@@ -161,9 +164,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Authentication model
 AUTH_USER_MODEL = 'users.User' 
 
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'landing-page'
 LOGOUT_REDIRECT_URL = 'landing-page'
 
@@ -171,3 +178,4 @@ LOGOUT_REDIRECT_URL = 'landing-page'
 STRIPE_PUBLIC_KEY = 'pk_test_51HmbWeD82XqdTEM6aeLhwXLuGRsHdH3MNItMQpIF3CbcLAkkoqFhqyzM6A4I6G7kdId3ayZwxInpdxQGNn44v33Y00oJkDWi5Z'
 STRIPE_PRIVATE_KEY = 'sk_test_51HmbWeD82XqdTEM6d22WdpGHZ97w6qsuybaGcqcBERCO7EXhNMhbrVzrl6ceoVgoN55SWhA7et4zOn2DqfJC1GsR00ND3bJdkw'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

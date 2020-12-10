@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from users.models import User
+from users.models import User, UserProfile, Interest
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -14,4 +14,18 @@ class UserRegistrationForm(UserCreationForm):
             'username':forms.TextInput(attrs={'class':'input2', 'placeholder':'username'}),
             'email':forms.EmailInput(attrs={'class':'input2', 'placeholder': 'email'}),
             'fullName':forms.TextInput(attrs={'class':'input2', 'placeholder':'full name'}),
+        }
+
+
+class InterestForm(forms.Form):
+    interest = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple,queryset=Interest.objects.all())
+
+
+class UserProfileForm(forms.ModelForm):
+    interest = InterestForm()
+    class Meta:
+        model = UserProfile
+        exclude = ['user']
+        widgets = {
+            'interest': forms.CheckboxSelectMultiple()
         }
