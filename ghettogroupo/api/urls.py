@@ -5,11 +5,14 @@ from drf_yasg.views import get_schema_view
 
 from django.urls import path, include
 
-from api.views import EditTasksViewSet, CreateTasksViewSet
+from api.views import EditTasksViewSet, CreateTasksViewSet, TodoListViewSet, TodoDetailViewSet, LeaderboardViewSet
 
 router = DefaultRouter()
 router.register('edit-tasks', EditTasksViewSet, basename='edit-tasks-api')
 router.register('create-tasks', CreateTasksViewSet, basename='create-tasks-api')
+router.register('create-todos', TodoListViewSet, basename='create-todos-api')
+router.register('edit-todos', TodoDetailViewSet, basename='edit-todos-api')
+router.register('get-leaderboard', LeaderboardViewSet, basename='get-leaderboard-api')
 
 schema_view = get_schema_view(
     openapi.Info(
