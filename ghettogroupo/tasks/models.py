@@ -31,7 +31,7 @@ class Task(models.Model):
             raise ValidationError('User does not have enough permissions to assign task')
     
     def ofGroup(self):
-        return self.assigned_by.group
+        return self.assigned_group.group
 
     def assigned_to(self):
         subgroup = Subgroup.objects.filter(task=self)

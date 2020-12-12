@@ -86,10 +86,10 @@ class User(AbstractUser):
         return True if Membership.objects.filter(member=self, isOwner=True) else False
     
     def hasAssignerPerm(self):
-        return True if Membership.objects.filter(member=self, isAssigner=True) else False
+        return True if (self.hasOwnerPerm() or Membership.objects.filter(member=self, isAssigner=True)) else False
     
     def hasManagerPerm(self):
-        return True if Membership.objects.filter(member=self, isManager=True) else False
+        return True if (self.hasOwnerPerm() or Membership.objects.filter(member=self, isManager=True)) else False
 
     def get_responses(self, quiz):
         return Responses.objects.filter(respondant=self, choice__question__quiz=quiz)
@@ -121,7 +121,7 @@ class Interest(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, default='default.jpg', on_delete=models.CASCADE)
     image = models.ImageField(_("Profile Picture"), upload_to='profilepictures/')
     age = models.IntegerField(_("Age"))
     organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of the organization")
