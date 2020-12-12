@@ -22,7 +22,7 @@
                         {% for group in groups %}
                             <form style="width: 80%; max-width: none;">
                                 <h4 style="font-weight: bold;">
-                                    <a href="#">
+                                    <a href="{% url 'group-home' code=group.code%}">
                                         {{group.name.title}}
                                     </a>
                                 </h4>

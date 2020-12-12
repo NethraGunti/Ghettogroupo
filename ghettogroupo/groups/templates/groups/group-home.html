@@ -9,7 +9,7 @@ Group Home
     <div style="padding:0; max-height: 2%px; border: 2px solid red;">
         <div class="top-sec">
             <div class="back-to-dashboard text-muted">
-                <a href="#">
+                <a href="{% url 'dashboard' %}">
                     <h4> Back To Dashboard</h4>
                 </a>
             </div>
@@ -18,25 +18,31 @@ Group Home
             <div class="division groups" style="width: 50%; height: 100%; overflow: scroll;">
                 <div class="form-group group2">
                     <form style="width: 80%; max-width: none;">
-                        {% for task in tasks %}
+                        {% if not tasks %}
                             <form style="width: 80%; max-width: none;">
-                                <h4 style="font-weight: bold;">
-                                    <a href="#">
-                                        {{task.task_title.title}}
-                                    </a>
-                                </h4>
-                                <p style="font-style: italic;">
-                                    Creator: &emsp13; {{task.assigned_by}}
-                                </p>
-                                <p style="font-style: italic;">
-                                    Deadline: &emsp13; {{task.deadline}}
-                                </p>
-                                <h5 style="font-size: 100;">
-                                    {{task.description}}
-                                </h5>
+                                <p style="text-aling:center"> no tasks have been assinged yet</p>
                             </form>
-                            <br>
-                        {% endfor %}
+                        {% else %}
+                            {% for task in tasks %}
+                                <form style="width: 80%; max-width: none;">
+                                    <h4 style="font-weight: bold;">
+                                        <a href="#">
+                                            {{task.task_title.title}}
+                                        </a>
+                                    </h4>
+                                    <p style="font-style: italic;">
+                                        Creator: &emsp13; {{task.assigned_by}}
+                                    </p>
+                                    <p style="font-style: italic;">
+                                        Deadline: &emsp13; {{task.deadline}}
+                                    </p>
+                                    <h5 style="font-size: 100;">
+                                        {{task.description}}
+                                    </h5>
+                                </form>
+                                <br>
+                            {% endfor %}
+                        {% endif %}
                 </div>
             </div>
             <div class="division checklist">

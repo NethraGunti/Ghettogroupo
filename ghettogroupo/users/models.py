@@ -114,7 +114,7 @@ class User(AbstractUser):
         tasks = Task.objects.filter(assigned_group=code)
         task_list = []
         for task in tasks:
-            if self in task.assigned_to:
+            if (self.pk,) in task.assigned_to().values_list('member__pk'):
                 task_list.append(task.pk)
         return Task.objects.filter(pk__in=list(set(task_list)))
 

@@ -39,11 +39,9 @@ def groupCreationView(request):
         data = form.get_cleaned_data(post_data=request.POST)
 
         plan = data['type'][0]
-        print('000000000000000000000000000000000000000')
-        print(plan)
         new_group = Group.objects.create(
             owner=user,
-            type=data['type'][0],
+            type=data['type'][0].upper(),
             name=data['name'][0],
             description=data['description'][0]
         )
@@ -56,7 +54,7 @@ def groupCreationView(request):
             isAssigner=True,
         )
         Subscription.objects.filter(plan__plan=plan.upper()).first().delete()
-        return render(request, 'group-home')
+        return redirect(reverse_lazy('group-home', kwargs={'code':new_group.code}))
     else:
         group_types = list(Subscription.objects.filter(
             user=user,
