@@ -6,6 +6,7 @@ from PIL import Image
 from quizzes.models import Responses
 from tasks.models import Task
 from groups.models import Group, Membership
+from developer.models import DeveloperKey
 
 INTERESTS = [
     ("Agriculture", "Agriculture"),
@@ -91,6 +92,9 @@ class User(AbstractUser):
     
     def hasManagerPerm(self):
         return True if (self.hasOwnerPerm() or Membership.objects.filter(member=self, isManager=True)) else False
+    
+    def hasDeveloperPerm(self):
+        return True if DeveloperKey.objects.filter(user=self).first() else False
     
     def get_groups(self):
         groups = Membership.objects.filter(

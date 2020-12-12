@@ -1,26 +1,24 @@
+from collections import OrderedDict
+
 from django.shortcuts import render
 from django.http import JsonResponse
-
 from rest_framework.response import Response
-from rest_framework import generics, viewsets, permissions
-from api.seralizers import LeaderboardSerializer
-from collections import OrderedDict
+from rest_framework import generics
+from api.serializers import LeaderboardSerializer
+
 from quizzes.models import *
 from users.models import *
 
-# Create your views here.
-class LeaderboardViewSet(viewsets.ModelViewSet):
+class LeaderboardView(generics.GenericAPIView):
     serializer_class = LeaderboardSerializer
 
-    def get(self,request):
-        # data = request.data
-        # self.queryset = Quiz.objects.all()
-        # serializer = self.serializer_class(data)
-        # data = serializer.data
-        # quiz_num = data['quiz_num']
-        # quiz_num = int(quiz_num)-1
+    def post(self,request):
+        data = request.data
         self.queryset = Quiz.objects.all()
-        quiz_num = 1 
+        serializer = self.serializer_class(data)
+        data = serializer.data
+        quiz_num = data['quiz_num']
+        quiz_num = int(quiz_num)-1
 
         question_list = []
         for i in range(len(self.queryset)):
@@ -61,6 +59,3 @@ class LeaderboardViewSet(viewsets.ModelViewSet):
 
         leaderboard_list = sorted(leaderboard_list,key=lambda ele: ele['total_marks'],reverse=True)
         return Response(leaderboard_list)
-
-    def get_queryset(self):
-        return Quiz.objects.all()

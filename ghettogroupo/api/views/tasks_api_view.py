@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from groups.models import Group, Membership
 from tasks.models import Task
 from api.permissions import HasTaskCreatePermissions, LimitObejectLevelView
-from api.seralizers import EditTaskSerializer, CreateTaskSerializer
+from api.serializers import EditTaskSerializer, CreateTaskSerializer
 
 
 

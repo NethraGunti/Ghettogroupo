@@ -67,7 +67,16 @@ class GroupTestCase(TestCase):
             task_desc='Test Task Desc'
         )
         self.task.save()
+        self.subgroup = Subgroup.objects.create(
+            assigned_to=self.user_membership1,
+            task=self.task
+        )
+        self.subgroup.save()
 
     def test_task_details(self):
-        self.assertEqual(self.task.ofGroup(), self.group)    
-        self.assertEqual(self.task.ofGroup(), self.group)    
+        self.assertEqual(self.task.assigned_group, self.group)
+        self.assertEqual(self.task.assigned_by, self.assigner)
+    
+    def test_subgroup_details(self):
+        self.assertTrue(self.user_membership1 in self.task.assigned_to())
+        self.assertTrue(self.user_membership2 not in self.task.assigned_to())

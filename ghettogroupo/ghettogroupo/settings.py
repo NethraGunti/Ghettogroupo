@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'quizzes.apps.QuizzesConfig',
     'tasks.apps.TasksConfig',
     'api.apps.ApiConfig',
-    'Leaderboard.apps.LeaderboardConfig',
+    'developer.apps.DeveloperConfig',
 
     # third party modules
     'rest_framework',

@@ -15,7 +15,7 @@
                 <div class="nav">
                     {% if user.is_authenticated %}
                         {% comment %} <a class="bt1" href="{% url '#' %}">Settings</a> {% endcomment %}
-                        <a class="bt1" href="#">Settings</a>
+                        <a class="bt1" href="{% url 'developer' %}">Developer</a>
                         |
                         <a class="bt1" href="{% url 'dashboard' %}">Dashboard</a>
                         |
