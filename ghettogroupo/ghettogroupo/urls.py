@@ -25,10 +25,11 @@ urlpatterns = [
     path('', include('users.urls')),
     path('', include('ToDo.urls')),
     path('api/', include('ToDo.api.urls')),
-    path('leaderboard/',include('Leaderboard.urls')),
+    path('leaderboard/', include('Leaderboard.urls')),
     path('', include('groups.urls')),
     path('', include('payments.urls')),
     path('', include('tasks.urls')),
     path('api/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('', include('quizzes.urls'))
 ]
