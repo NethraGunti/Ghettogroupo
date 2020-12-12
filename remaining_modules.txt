@@ -1,5 +1,0 @@
-1. Owners and managers can accept requests
-2. Send Requests integration
-3. Manage groups
-4. Integrate Group Home and Home Page
-5. Int. subscription with payments

@@ -116,8 +116,12 @@ WSGI_APPLICATION = 'ghettogroupo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ghetto',
+        'USER': 'ghetto',
+        'PASSWORD': 'ghetto',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -171,7 +175,7 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'users.User' 
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'landing-page'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'landing-page'
 
 #STRIPE TEST ACCESS KEYS

@@ -7,9 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 
 GROUPS = [
-    ("Regular", "Regular"),
-    ("Education", "Educational"),
-    ("Organization", "Organization")
+    ("PUBLIC", "PUBLIC"),
+    ("PRIVATE", "PRIVATE")
 ]
 
 

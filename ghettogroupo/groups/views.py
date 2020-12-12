@@ -8,10 +8,12 @@ from payments.models import Subscription
 from groups.models import Group, Membership, Request
 from groups.forms import GroupCreationForm, JoinGroupForm
 
+
 @login_required
 def group_page_view(request, code):
+    tasks = request.user.get_tasks(code=code)
     if Membership.objects.filter(member=request.user, group__code=code):
-        return redirect(reverse_lazy('group-home'))
+        return render(request, 'groups/group-home.html', {'tasks': tasks})
 
     try:
         user_req = Request.objects.get(user=request.user, group=code)
@@ -36,6 +38,9 @@ def groupCreationView(request):
         form = GroupCreationForm(request.POST)
         data = form.get_cleaned_data(post_data=request.POST)
 
+        plan = data['type'][0]
+        print('000000000000000000000000000000000000000')
+        print(plan)
         new_group = Group.objects.create(
             owner=user,
             type=data['type'][0],
@@ -50,6 +55,7 @@ def groupCreationView(request):
             isManager=True,
             isAssigner=True,
         )
+        Subscription.objects.filter(plan__plan=plan.upper()).first().delete()
         return render(request, 'group-home')
     else:
         group_types = list(Subscription.objects.filter(
