@@ -17,9 +17,10 @@ class TodoListView(generics.GenericAPIView):
         return Response(serializer.data)
 
     def post(self,request):
-        serializer = self.serializer_class(data = request.data)
+
+        serializer = self.serializer_class(instance=request.user, data = request.data)
         if serializer.is_valid():
-            serializer.save(user=self.request.user)
+            serializer.save()
         return Response(serializer.data)
 
 
@@ -33,9 +34,8 @@ class TodoDetailView(generics.GenericAPIView):
     def post(self, request, pk):
         task = Todo.objects.get(id=pk)
         serializer = self.serializer_class(instance=task, data = request.data)
-
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=self.request.user)
 
         return Response(serializer.data)
 
