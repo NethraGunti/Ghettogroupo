@@ -13,7 +13,7 @@ class CreateQuizViewSet(viewsets.ModelViewSet):
     serializer_class = CreateQuizSerializer
     queryset = Quiz.objects.all()
     permission_classes = [permissions.IsAuthenticated,
-                          HasTaskCreatePermissions]
+                          HasTaskCreatePermissions, LimitObejectLevelView]
     http_method_names = ['get', 'post']
 
     def getUserGroups(self):
@@ -27,7 +27,7 @@ class CreateQuizViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         groups = self.getUserGroups()
-        return Response(Group.objects.all().values())
+        return Response(groups.values())
 
     def get_queryset(self):
         return Quiz.objects.filter(creator=self.request.user)
@@ -65,4 +65,4 @@ class UpdateQuizViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         # groups = self.getUserGroups()
-        return Response(Quiz.objects.all().values())
+        return Response(Quiz.objects.filter(creator=request.user).values())
