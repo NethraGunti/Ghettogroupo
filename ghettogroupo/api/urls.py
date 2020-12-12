@@ -5,13 +5,13 @@ from drf_yasg.views import get_schema_view
 
 from django.urls import path, include
 
-from api.views import EditTasksViewSet, CreateTasksViewSet, TodoListViewSet, TodoDetailViewSet, LeaderboardView, CreateQuizViewSet, UpdateQuizViewSet
+from api.views import EditTasksViewSet, CreateTasksViewSet, LeaderboardView, CreateQuizViewSet, UpdateQuizViewSet
 
 router = DefaultRouter()
 router.register('edit-tasks', EditTasksViewSet, basename='edit-tasks-api')
 router.register('create-tasks', CreateTasksViewSet, basename='create-tasks-api')
-router.register('create-quiz', CreateQuizViewSet)
-router.register('update-quiz', UpdateQuizViewSet)
+router.register('create-quiz', CreateQuizViewSet, basename='create-quiz-api')
+router.register('update-quiz', UpdateQuizViewSet,  basename='update-quiz-api')
 
 schema_view = get_schema_view(
     openapi.Info(

@@ -5,7 +5,7 @@ import json
 
 from quizzes.models import Quiz, Question, Choice
 from groups.models import Group, Membership
-from api.permissions import HasTaskCreatePermissions, LimitObejectLevelView, HasQuizUpdatePermissions
+from api.permissions import HasTaskCreatePermissions, LimitObejectLevelView
 from api.serializers import CreateQuizSerializer, UpdateQuizSerializer
 
 
@@ -13,7 +13,7 @@ class CreateQuizViewSet(viewsets.ModelViewSet):
     serializer_class = CreateQuizSerializer
     queryset = Quiz.objects.all()
     permission_classes = [permissions.IsAuthenticated,
-                          HasTaskCreatePermissions, LimitObejectLevelView]
+                          HasTaskCreatePermissions]
     http_method_names = ['get', 'post']
 
     def getUserGroups(self):
@@ -27,7 +27,7 @@ class CreateQuizViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         groups = self.getUserGroups()
-        return Response(groups.values())
+        return Response(Group.objects.all().values())
 
     def get_queryset(self):
         return Quiz.objects.filter(creator=self.request.user)
@@ -60,9 +60,9 @@ class UpdateQuizViewSet(viewsets.ModelViewSet):
     serializer_class = UpdateQuizSerializer
     queryset = Quiz.objects.all()
     permission_classes = [permissions.IsAuthenticated,
-                          HasQuizUpdatePermissions]
+                          HasTaskCreatePermissions]
     http_method_names = ['get', 'put', 'delete']
 
     def list(self, request, *args, **kwargs):
         # groups = self.getUserGroups()
-        return Response(Quiz.objects.filter(creator=request.user).values())
+        return Response(Quiz.objects.all().values())

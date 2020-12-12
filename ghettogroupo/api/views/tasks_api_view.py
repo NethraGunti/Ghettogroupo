@@ -25,7 +25,7 @@ class EditTasksViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'put', 'delete']
 
     def get_queryset(self):
-        return Task.objects.filter(assigned_by=self.request.user)
+        return Task.objects.all()
     
     # def perform_create(self, serializer):
     #     user = self.request.user
@@ -59,7 +59,7 @@ class CreateTasksViewSet(viewsets.ModelViewSet):
         return {'groups': self.getUserGroups()}
 
     def get_queryset(self):
-        return Task.objects.filter(assigned_by=self.request.user)
+        return Task.objects.all()
     
     def list(self, request, *args, **kwargs):
         groups = self.getUserGroups()
