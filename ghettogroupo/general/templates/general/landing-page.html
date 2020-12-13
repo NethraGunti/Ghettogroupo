@@ -14,10 +14,7 @@
             <div class="top-right">
                 <div class="nav">
                     {% if user.is_authenticated %}
-                        {% comment %} <a class="bt1" href="{% url '#' %}">Settings</a> {% endcomment %}
-                        <a class="bt1" href="{% url 'developer' %}">Developer</a>
-                        |
-                        <a class="bt1" href="{% url 'dashboard' %}">Dashboard</a>
+                        <a class="bt1" href="{% url 'landing-page' %}">Home</a>
                         |
                         <a class="bt1" href="{% url 'logout' %}">Logout</a>
                     {% else %}
@@ -129,7 +126,7 @@
                         </p>
                     </div>
                     <div class="div-button">
-                        <a href="{% url 'create-group' %}" class="button">
+                        <a href="{% url 'subscribe' %}" class="button">
                                 CREATE
                         </a>
                     </div>

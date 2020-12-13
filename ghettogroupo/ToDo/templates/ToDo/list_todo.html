@@ -1,20 +1,26 @@
 {% extends 'groups/nav-base.html' %}
 {% load static %}
 
-{% block title %}
-Checklist
-{% endblock%}
-
 {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>List Todo</title>
 	<style>
-		html{
-			overflow: hidden;
-		}
-
+	
+		/* body{
+			background-image: url('https://image.shutterstock.com/image-photo/writers-table-flat-lay-composition-260nw-1017732259.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		} */
 		body{
 			background-color: #edf6fd;
 		}
-
+	
+	
 		input{
 			width: 100%;
 			padding: 12px 20px;
@@ -32,7 +38,7 @@ Checklist
 	
 		.center-column{
 			width:600px;
-			margin: 50px auto;
+			margin: 20px auto;
 			padding:20px;
 			background-color: #fff;
 			border-radius: 3px;
@@ -53,17 +59,15 @@ Checklist
 			background-color: #ffae19;
 			border-color: #e59400;
 		}
-
-		.todo-list{
-			max-height:300px;
-			overflow: scroll;
-		}
 	
 	</style>
 
+</head>
+<body>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<div class="center-column">
-		<h3>Checklist</h3>
+		<h3>TO-DO</h3>
 	
 		<form action='' method="POST" >
 			{% csrf_token %}
@@ -71,7 +75,7 @@ Checklist
 			<input class = "btn btn-info" type="submit" name="create task">
 		</form>
 	
-		<div class="todo-list">
+		<div class="todo-list" style="overflow-y: scroll">
 	
 		{% for task in tasks %}
 			<div class="item-row">
@@ -88,4 +92,6 @@ Checklist
 		</div>
 	</div>
 
+</body>
+</html>
 {% endblock %}

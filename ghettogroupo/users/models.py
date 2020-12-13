@@ -4,9 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from PIL import Image
 
 from quizzes.models import Responses
-from tasks.models import Task
-from groups.models import Group, Membership
-from developer.models import DeveloperKey
+from groups.models import Membership
 
 INTERESTS = [
     ("Agriculture", "Agriculture"),
@@ -88,19 +86,10 @@ class User(AbstractUser):
         return True if Membership.objects.filter(member=self, isOwner=True) else False
     
     def hasAssignerPerm(self):
-        return True if (self.hasOwnerPerm() or Membership.objects.filter(member=self, isAssigner=True)) else False
+        return True if Membership.objects.filter(member=self, isAssigner=True) else False
     
     def hasManagerPerm(self):
-        return True if (self.hasOwnerPerm() or Membership.objects.filter(member=self, isManager=True)) else False
-    
-    def hasDeveloperPerm(self):
-        return True if DeveloperKey.objects.filter(user=self).first() else False
-    
-    def get_groups(self):
-        groups = Membership.objects.filter(
-            member=self
-        ).values_list('group').distinct()
-        return Group.objects.filter(code__in=groups)
+        return True if Membership.objects.filter(member=self, isManager=True) else False
 
     def get_responses(self, quiz):
         return Responses.objects.filter(respondant=self, choice__question__quiz=quiz)
@@ -113,14 +102,8 @@ class User(AbstractUser):
             if item.choice.isAnswer:
                 count += item.choice.question.max_marks
         return count
-    
-    def get_tasks(self, code):
-        tasks = Task.objects.filter(assigned_group=code)
-        task_list = []
-        for task in tasks:
-            if (self.pk,) in task.assigned_to().values_list('member__pk'):
-                task_list.append(task.pk)
-        return Task.objects.filter(pk__in=list(set(task_list)))
+    # def inGroup(self, group):
+        # return True if
 
 
 class Interest(models.Model):
@@ -138,7 +121,7 @@ class Interest(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, default='default.jpg', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(_("Profile Picture"), upload_to='profilepictures/')
     age = models.IntegerField(_("Age"))
     organization = models.CharField(_("Organization"), max_length=75, help_text="write full form of the organization")

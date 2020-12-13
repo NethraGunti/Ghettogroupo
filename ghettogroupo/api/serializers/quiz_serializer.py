@@ -27,7 +27,7 @@ class CreateQuizSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quiz
-        exclude = ['creator', 'pub_date', 'end_date']
+        exclude = ['creator', 'pub_date']
         include = ['questions']
 
     def save(self, user, **kwargs):
@@ -44,9 +44,10 @@ class CreateQuizSerializer(serializers.ModelSerializer):
         # print("tuturu")
         questions = validated_data['questions']
         description_text = validated_data['description_text']
+        title = validated_data['title']
         group_code = validated_data['group']
         quiz = Quiz.objects.create(
-            creator=user, description_text=description_text, group=group_code)
+            creator=user, title=title, description_text=description_text, group=group_code)
         quiz.save()
 
         for question in questions:

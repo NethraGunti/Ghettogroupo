@@ -2,36 +2,25 @@
 {% load static %}
 
 {% block body %}
-<div class="contact-clean">
-    <div class="form-group group2">
-        <h3>
-            Create Task
-        </h3>
-        <form method="POST" action="{% url 'create-task' code=code%}">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit" class="button" style="color: white ;background-color: #28a745; border-color: #28a745;">Create</button>
-        </form>
-    </div>
-</div>
-<style>
-    body{
-      background-color: #f1f7fc;
-    }
-    .contact-clean{
-        padding-top: 20px;
-    }
-    .container{
-      background-color: white;
-    }
-    label{
-      font-weight: bold;
-    }
-    h3{
-      text-align: center;
-      color: #505E6C;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif  ;
-    }
-  </style>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Tasks</title>
+</head>
+<body>
+hi
+    <form method="POST" action="{% url 'create-task' code=code%}">
+        {% csrf_token %}
+        {% for feild in form %}
+            {{feild.label}} <br> {{feild.help_text}}
+            {{feild}}
+            <br>
+            <br>
+        {% endfor %}
+        <button type="submit" class="button" >Create</button>
+    </form>
+</body>
+</html>
 {% endblock %}

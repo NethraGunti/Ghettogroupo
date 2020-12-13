@@ -4,126 +4,74 @@
 Group Home
 {% endblock %}
 {% block body%}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <div style="padding:0; max-height: 2%px; border: 2px solid red;">
+    <div style="padding:0; height: 560px; border: 2px solid red;">
         <div class="top-sec">
             <div class="back-to-dashboard text-muted">
-                <a href="{% url 'dashboard' %}">
+                <a href="#">
                     <h4> Back To Dashboard</h4>
                 </a>
             </div>
+            <div class="group-title text-muted">
+                <a href="#">
+                    <h3>
+                        Group {{group.title}}
+                    </h3>    
+                </a>
+                <h5>
+                    {{group.code}}
+                </h5>
+            </div>
         </div>
-        <div class="contact-clean">
-            <div class="division groups" style="width: 50%; height: 100%; overflow: scroll;">
-                <div class="form-group group2">
-                    <form style="width: 80%; max-width: none;">
-                        {% if not tasks %}
-                            <form style="width: 80%; max-width: none;">
-                                <p style="text-aling:center"> no tasks have been assinged yet</p>
-                            </form>
-                        {% else %}
-                            {% for task in tasks %}
-                                <form style="width: 80%; max-width: none;">
-                                    <h4 style="font-weight: bold;">
-                                        <a href="#">
-                                            {{task.task_title.title}}
-                                        </a>
-                                    </h4>
-                                    <p style="font-style: italic;">
-                                        Creator: &emsp13; {{task.assigned_by}}
-                                    </p>
-                                    <p style="font-style: italic;">
-                                        Deadline: &emsp13; {{task.deadline}}
-                                    </p>
-                                    <h5 style="font-size: 100;">
-                                        {{task.description}}
-                                    </h5>
-                                </form>
-                                <br>
-                            {% endfor %}
-                        {% endif %}
+        <div class="sec sec-1">
+            <div class="sub-1">
+                <div class="sub-1-border">
+                    <h3>
+                        Quiz
+                    </h3>
                 </div>
-            </div>
-            <div class="division checklist">
-                <div class="checklist-sub">
-                    <a href="#quizzes">
-                        <h2 style="margin: 0;">
-                            Quizzes
-                        </h2>
-                    </a>
-                </div>
-            </div>
-            <div class="division whiteboard">
-                <div class="checklist-sub">
-                    <a href="#whiteboard">
-                        <h2 style="margin: 0;">
-                            Whiteboard
-                    </h2>
-                    &emsp13;&emsp13;&emsp13;&emsp13;&emsp13;(coming soon)
-                    </a>
-                </div>
-            </div>
-            <div class="division whiteboard">
-                <div class="checklist-sub">
-                    <a href="#audio">
-                        <h2 style="margin: 0;">
-                            Audio Room
-                    </h2>
-                    &emsp13;&emsp13;&emsp13;&emsp13;&emsp13;(coming soon)
-                    </a>
-                </div>
-            </div>
 
+            </div>
+            <div class="sub-1">
+                <div class="sub-1-border">
+                    <h3>
+                        Whiteboard
+                    </h3>
+                </div>
+
+            </div>
+            <div class="sub-1">
+                <div class="sub-1-border">
+                    <h3>
+                        A / V
+                    </h3>
+                </div>
+
+            </div>
         </div>
-        <style>
-            html{
-                overflow: hidden;
-            }
-            .contact-clean form{
-                margin-right: 5px;
-                margin-left: 60px;
-                border: 2px solid rgba(0,0,0,0.3);
-            }
-            .division{
-                float: left;
-                width: 40%;
-            }
-            .checklist{
-                margin-top: 1%;
-            }
-            .whiteboard{
-                margin-top: 1%;
-            }
-            .checklist, .whiteboard{
-                background-color: #ffffff;
-                height: 25%;
-                margin-left: 30px;
-                margin-right: 10px;
-                justify-content: center;
-                display: flex;
-                box-shadow: rgba(0,0,0,0.1);
-                border: 2px solid rgba(0,0,0,0.3);
-            }
-            .checklist-sub{
-                width: 50%;
-                justify-content: center;
-                display: flex;
-                margin: auto;
-                color: #505e6c;
-            }
-            .contact-clean a{
-                color: inherit;
-                text-decoration: none;
-            }
-            .contact-clean a:hover{
-                color: inherit;
-                text-decoration: none;
-                text-shadow: 1px 1px #505e6c;
-            }
-        </style>
-        <script>
-            $(".contact-clean").css("height",window.innerHeight-90);
-        </script>
-
+        <div class="sec sec-2">
+            <div class="sec-title">
+                <h4>
+                    Tasks
+                </h4>
+            </div>
+            <div class="sub-check">
+                hi
+                <br>
+                INTEGRATE TASKS HERE
+            </div>
+        </div>
+        <div class="sec sec-3">
+            <div class="sec-title">
+                <h4>
+                    Checklist
+                </h4>
+            </div>
+            <div class="sub-check">
+                hi
+                <br>
+                INTEGRATE Checklist HERE
+            </div>
+        </div>
+    </div>
 {% endblock %}

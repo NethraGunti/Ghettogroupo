@@ -40,7 +40,8 @@ def userprofile(request):
                 if i not in profile.interest.all():
                     profile.interest.add(i)
 
-            return redirect(reverse_lazy('dashboard'))
+
+            return redirect(reverse_lazy('landing-page'))
     else:
         form = UserProfileForm(instance=user.profile)
     return render(request, 'users/profile.html', {'form':form})

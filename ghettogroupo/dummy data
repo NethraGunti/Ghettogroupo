@@ -1,0 +1,34 @@
+{
+    "questions": [
+{
+"question_text" :"What is A?",
+"max_marks":"1",
+"choices": [
+   {
+        "choice_text": "a" ,
+        "isAnswer":"True"
+    },
+ {
+        "choice_text": "b" ,
+        "isAnswer":"False"
+    }
+  ]
+},
+{"question_text" :"What is the answer to every question in the universe?",
+"max_marks":"5",
+"choices": [
+   {
+        "choice_text": "42" ,
+        "isAnswer":"True"
+    },
+ {
+        "choice_text": "There is no such answer." ,
+        "isAnswer":"False"
+    }
+  ]
+}
+],
+    "title":"Test Quiz",
+    "description_text": "A quiz made for demonstration purposes.",
+    "group": "46178649-3d4e-4e82-913b-f219a42be845"
+}
