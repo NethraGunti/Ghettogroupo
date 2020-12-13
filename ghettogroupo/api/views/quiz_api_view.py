@@ -5,8 +5,8 @@ import json
 
 from quizzes.models import Quiz, Question, Choice
 from groups.models import Group, Membership
-from api.permissions import HasTaskCreatePermissions, LimitObejectLevelView, HasQuizUpdatePermissions
-from api.seralizers import CreateQuizSerializer, UpdateQuizSerializer
+from api.permissions import HasTaskCreatePermissions, LimitObejectLevelView
+from api.serializers import CreateQuizSerializer, UpdateQuizSerializer
 
 
 class CreateQuizViewSet(viewsets.ModelViewSet):
@@ -47,11 +47,20 @@ class CreateQuizViewSet(viewsets.ModelViewSet):
 
 
 class UpdateQuizViewSet(viewsets.ModelViewSet):
-    """docstring for UpdateQuizViewSet."""
+    """
+    list:
+        allowed users can view existing quizzes they have created
+    retrieve:
+        details of a quiz
+    update:
+        edit a quiz
+    delete:
+        delete a quiz
+    """
     serializer_class = UpdateQuizSerializer
     queryset = Quiz.objects.all()
     permission_classes = [permissions.IsAuthenticated,
-                          HasQuizUpdatePermissions]
+                          HasTaskCreatePermissions]
     http_method_names = ['get', 'put', 'delete']
 
     def list(self, request, *args, **kwargs):

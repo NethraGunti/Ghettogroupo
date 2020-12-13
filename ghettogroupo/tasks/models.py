@@ -30,12 +30,11 @@ class Task(models.Model):
         else:
             raise ValidationError('User does not have enough permissions to assign task')
     
-    def ofGroup(self):
-        return self.assigned_by.group
-
     def assigned_to(self):
-        subgroup = Subgroup.objects.filter(task=self)
-        return subgroup or Membership.objects.filter(group=self.ofGroup())
+        subgroup = Subgroup.objects.filter(task=self).values_list('assigned_to__pk')
+        if subgroup:
+            return Membership.objects.filter(pk__in=subgroup)
+        return  Membership.objects.filter(group=self.assigned_group)
 
 
 class Subgroup(models.Model):

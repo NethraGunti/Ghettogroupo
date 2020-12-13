@@ -5,23 +5,14 @@ import datetime
 
 class Quiz(models.Model):
     def __str__(self):
-        return self.title
+        return self.description_text
 
     creator = models.ForeignKey("users.User", on_delete=models.CASCADE)
     group = models.ForeignKey("groups.Group", on_delete=models.CASCADE)
-    title = models.CharField(max_length=100, default="Untitled Quiz")
     description_text = models.CharField(max_length=500)
-    pub_status = models.BooleanField(default=False)
     pub_date = models.DateTimeField('date published', auto_now_add=True)
-    # end_date = models.DateTimeField(
-    #     'end date', default=timezone.now() + datetime.timedelta(days=1))
-
-    def max_marks_quiz(self):
-        max_marks = 0
-        questions = Question.objects.filter(quiz=self)
-        for question in questions:
-            max_marks += question.max_marks
-        return max_marks
+    end_date = models.DateTimeField(
+        'end date', default=timezone.now() + datetime.timedelta(days=1))
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now()

@@ -9,7 +9,7 @@ class TestViews(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.list_url = reverse('list')
+        self.list_url = reverse('checklist')
         self.update_url = reverse('update_todo', args=['some-id'])
         self.delete_url = reverse('delete_todo', args=['some-id'])
         self.list_data = {

@@ -3,8 +3,15 @@ from users.models import User
 from quizzes.models import *
 
 
-class LeaderboardSerializer(serializers.ModelSerializer):
+class LeaderboardSerializer(serializers.Serializer):
+    quiz_num = serializers.IntegerField()
 
     class Meta:
-        model=Quiz
-        fields = ['creator']
+        fields = ['quiz_num']
+
+
+
+
+
+            
+

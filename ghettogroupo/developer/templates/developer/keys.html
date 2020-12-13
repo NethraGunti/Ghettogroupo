@@ -1,0 +1,38 @@
+{% extends 'groups/nav-base.html' %}
+{% load static %}
+
+{% block title %}
+    Developer Access
+{% endblock %}
+
+{% block body %}
+<div class="contact-clean" style="height: 560px;">
+    <form style="text-align:center;">
+        <h2 class="text-center">Developer Access</h2>
+        {% if keys %}
+            <h5>
+                Client ID:
+            </h5>
+            <p>
+                {{ci}}
+            </p>
+            <br>
+            <h5>
+                Secret Key:
+            </h5>
+            <p>
+                {{sk}}
+            </p>
+        {% else %}
+            <p>
+                You're not a developer yet!
+                <br>
+                <a href="{% url 'gen-keys' %}">
+                    Get your developer keys now!!!                    
+                </a>
+            </p>
+        {% endif %}   
+
+    </form>
+</div>
+{% endblock %}

@@ -7,7 +7,7 @@ from groups.views import group_page_view, groupCreationView, join_group_view
 
 urlpatterns = [
     # url(r'^user/(?P<username>\w+)/(?P<code>[0-9A-Fa-f-]+)$', group_page_view, name='user-group-page'),
-    url(r'^user/(?P<code>[0-9A-Fa-f-]+)$', group_page_view, name='group-page'),
+    url(r'^user/(?P<code>[0-9A-Fa-f-]+)$', group_page_view, name='group-home'),
     url('create-group', groupCreationView, name='create-group'),
     url('join-group', join_group_view, name='join-group'),
 ]

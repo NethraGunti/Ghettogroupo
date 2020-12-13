@@ -8,7 +8,7 @@ from ToDo.api.views import TodoListView, TodoDetailView
 class TestUrls(SimpleTestCase):
 
     def test_list_url_is_resolved(self):
-        url = reverse('list')
+        url = reverse('checklist')
         self.assertEquals(resolve(url).func, index)
 
     def test_add_url_is_resolved(self):

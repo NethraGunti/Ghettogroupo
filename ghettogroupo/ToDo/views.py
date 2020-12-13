@@ -24,7 +24,7 @@ def index(request):
             new_form.save()
         else:
             print('ajsdbnwijndwjsndjnjxndaqwndoiw0-0000000000000000000000000000')
-        return redirect('list')
+        return redirect('checklist')
 
     context = {'tasks':tasks, 'form':form}
     return render(request, 'ToDo/list_todo.html', context)
@@ -40,7 +40,7 @@ def updateTodo(request, pk):
     
         if form.is_valid():
             form.save()
-            return redirect('list')  
+            return redirect('checklist')  
 
     context = {'form':form}
     return render(request, 'ToDo/update_todo.html', context)
@@ -51,6 +51,6 @@ def deleteTodo(request, pk):
 
     if request.method == 'POST':
         item.delete()
-        return redirect('list') 
+        return redirect('checklist') 
     context = {'item':item}
     return render(request, 'ToDo/delete_todo.html',context)
