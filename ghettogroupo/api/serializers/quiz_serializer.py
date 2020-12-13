@@ -27,7 +27,7 @@ class CreateQuizSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quiz
-        exclude = ['creator', 'pub_date', 'end_date']
+        exclude = ['creator', 'pub_date']
         include = ['questions']
 
     def save(self, user, **kwargs):
@@ -69,4 +69,4 @@ class CreateQuizSerializer(serializers.ModelSerializer):
 class UpdateQuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
-        exclude = ['creator', 'pub_date', 'end_date']
+        exclude = ['creator', 'pub_date']
